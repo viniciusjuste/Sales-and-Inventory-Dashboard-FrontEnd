@@ -1,17 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { initFlowbite } from 'flowbite';
+import { RouterModule } from '@angular/router';
 
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
+  imports: [RouterModule],
   styleUrl: './app.component.css',
   standalone: true
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   title = 'SalesAndInventoryDashboard-FE';
-
-  ngOnInit(): void {
-    initFlowbite(); 
-  }
 }

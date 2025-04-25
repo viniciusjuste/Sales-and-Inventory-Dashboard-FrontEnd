@@ -1,0 +1,31 @@
+/* Sidebar styles */
+.sidebar-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+    background-color: #f4f4f4;
+}
+
+.sidebar {
+    width: 280px;
+    height: 100%;
+    position: relative;
+    padding: 0.5rem 1rem 1rem 0rem;
+    transition: transform 0.5s ease;
+}
+
+/* Collapse sidebar */
+.sidebar-collapsed {
+    transform: translateX(-98%);
+}
+
+/* button toggle sidebar */
+.sidebar>.btn-toggle-sidebar {
+    position: absolute;
+    width: 30px;
+    top: 50%;
+    left: 95%;
+    cursor: pointer;
+    transform: scale(1.5);
+}

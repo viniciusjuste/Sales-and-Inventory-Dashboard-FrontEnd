@@ -1,0 +1,50 @@
+<div class="sidebar-container">
+    <!-- Sidebar -->
+    <div class="d-flex flex-column flex-shrink-0 bg-light sidebar" [ngClass]="{'sidebar-collapsed': !isSidebarOpen}"
+        #sidebar id="sidebar">
+        <!-- Itens da sidebar -->
+        <ul class="nav nav-pills flex-column mb-auto nav-sidebar">
+            <li class="nav-item">
+                <a href="#" class="nav-link active" aria-current="page">
+                    <i class="bi bi-house-door"></i>
+                    Home
+                </a>
+            </li>
+            <li>
+                <a href="#" class="nav-link link-dark">
+                    <i class="bi bi-graph-down"></i>
+                    Dashboard
+                </a>
+            </li>
+            <li>
+                <a href="#" class="nav-link link-dark">
+                    <svg class="bi me-2" width="16" height="16">
+                        <use xlink:href="#table"></use>
+                    </svg>
+                    Orders
+                </a>
+            </li>
+            <li>
+                <a href="#" class="nav-link link-dark">
+                    <svg class="bi me-2" width="16" height="16">
+                        <use xlink:href="#grid"></use>
+                    </svg>
+                    Products
+                </a>
+            </li>
+            <li>
+                <a href="#" class="nav-link link-dark">
+                    <svg class="bi me-2" width="16" height="16">
+                        <use xlink:href="#people-circle"></use>
+                    </svg>
+                    Customers
+                </a>
+            </li>
+        </ul>
+        <!-- Botão de toggle (seta) dentro da sidebar -->
+        <button id="toggleSidebar" class="btn-toggle-sidebar" (click)="toggleSidebar()">
+            <i class="bi" [ngClass]="isSidebarOpen ? 'bi-arrow-left-circle-fill' : 'bi-arrow-right-circle-fill'">
+            </i>
+        </button>
+    </div>
+</div>
