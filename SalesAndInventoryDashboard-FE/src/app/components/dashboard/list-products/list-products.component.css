@@ -1,0 +1,10 @@
+.title-wrapper {
+  display: flex;
+  align-items: center;
+  margin: 2rem 0rem 2rem 0rem;
+}
+
+.title-wrapper > h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+}

@@ -2,17 +2,18 @@
 .sidebar-container {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: fit-content;
     height: 100vh;
-    background-color: #f4f4f4;
+    position: fixed;
+    top: 0;
+    transition: transform 0.5s ease;
 }
 
 .sidebar {
     width: 280px;
     height: 100%;
-    position: relative;
     padding: 0.5rem 1rem 1rem 0rem;
-    transition: transform 0.5s ease;
+    z-index: var(--z-sidebar);
 }
 
 /* Collapse sidebar */

@@ -2,3 +2,24 @@
 @import "bootstrap-icons/font/bootstrap-icons.css";
 
 
+:root {
+    /*
+     * z-index values
+     *
+     *  0: base value (no z-index)
+     * 10: sidebar
+     * 20: dropdowns
+     * 30: modals
+     * 40: toasts
+     * 50: loader
+     */
+    --z-base: 0;
+    --z-sidebar: 10;
+    --z-dropdown: 20;
+    --z-modal: 30;
+    --z-toast: 40;
+    --z-loader: 50;
+  }
+  
+
+
