@@ -1,0 +1,15 @@
+.section-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.form-wrapper {
+    width: 70vw;
+}
+
+form {
+    z-index: 1;
+}

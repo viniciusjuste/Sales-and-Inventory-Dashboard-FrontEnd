@@ -4,15 +4,15 @@
         <!-- Itens da sidebar -->
         <ul class="nav nav-pills flex-column mb-auto nav-sidebar">
             <li class="nav-item">
-                <a [routerLink]="'/'" routerLinkActive="active-link" class="nav-link" aria-current="page" (click)="toggleSidebar()">
+                <a [routerLink]="'/'" class="nav-link link-dark" aria-current="page" (click)="toggleSidebar()">
                     <i class="bi bi-boxes"></i>
                     List Products
                 </a>
             </li>
             <li>
-                <a href="#" class="nav-link link-dark">
-                    <i class="bi bi-graph-down"></i>
-                    Dashboard
+                <a [routerLink]="'/add-product'" href="#" class="nav-link link-dark" (click)="toggleSidebar()">
+                    <i class="bi bi-box-seam"></i>
+                    Add Product
                 </a>
             </li>
             <li>
