@@ -4,7 +4,68 @@
   margin: 2rem 0rem 2rem 0rem;
 }
 
-.title-wrapper > h1 {
+.title-wrapper>h1 {
   font-size: 3.5rem;
   font-weight: 700;
+}
+
+/* Estilos para a tabela */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+.table th,
+.table td {
+  padding: 12px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+.table th {
+  color: white;
+}
+
+.table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.table tr:hover {
+  background-color: #ddd;
+}
+
+.table td {
+  font-size: 0.8rem;
+  ;
+}
+
+.table .active {
+  color: green;
+  font-weight: bold;
+}
+
+.table .inactive {
+  color: red;
+}
+
+/* Estilo para os botões de ação */
+.table-action-btns {
+  justify-content: center;
+  display: flex;
+  gap: 0.7rem;
+}
+
+.table-action-btn {
+  width: 66px;
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 0.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.table-action-btn.disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
 }

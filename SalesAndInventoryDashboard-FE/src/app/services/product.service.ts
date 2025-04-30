@@ -12,6 +12,11 @@ export class ProductService {
 
   apiUrl = 'http://localhost:5292/products';
 
+/**
+ * Fetches a list of products from the server.
+ * 
+ * @returns An observable that emits an array of products.
+ */
   getProducts(): Observable<any> {
     return this.http.get<Product[]>(this.apiUrl);
   }

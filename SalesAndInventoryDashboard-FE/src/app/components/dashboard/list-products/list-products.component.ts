@@ -1,14 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../../services/product.service';
+import { RouterModule } from '@angular/router';
+import { Product } from '../../../models/product';
+import { Observable } from 'rxjs';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-list-products',
-  imports: [],
+  imports: [RouterModule, CommonModule],
+  standalone: true,
   templateUrl: './list-products.component.html',
   styleUrl: './list-products.component.css'
 })
 export class ListProductsComponent implements OnInit {
-  products: any[] = [];
+
+  product$!: Observable<Product>;
+  products$!: Observable<Product[]>;
 
   constructor(private productService: ProductService) {}
 
@@ -16,13 +23,12 @@ export class ListProductsComponent implements OnInit {
     this.getProducts();
   }
 
+  /**
+   * Retrieves a list of products from the server and assigns it to the "products$" observable.
+   * This function is called in the component's OnInit lifecycle hook.
+   */
   getProducts() {
-    this.productService.getProducts().subscribe((data: any) => {
-      this.products = data;
-      console.log(this.products);
-    });
-
-    // FALTA BAIXAR O SQL SERVER
+    this.products$ = this.productService.getProducts();
   }
 
 }
