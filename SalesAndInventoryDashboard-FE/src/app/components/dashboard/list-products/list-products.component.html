@@ -24,7 +24,7 @@
         <td>{{ product.name }}</td>
         <td>{{ product.description }}</td>
         <td>{{ product.price | currency }}</td>
-        <td>{{ product.stockQuantity }}</td>
+        <td [ngClass]="{'low-stock': product.stockQuantity <= 10, 'high-stock': product.stockQuantity > 10}">{{ product.stockQuantity }}</td>
         <td>{{ product.category }}</td>
         <td>{{ product.createdDate | date:'short' }}</td>
         <td>{{ product.updatedDate | date:'short' }}</td>

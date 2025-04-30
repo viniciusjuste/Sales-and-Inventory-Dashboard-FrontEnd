@@ -69,3 +69,15 @@
   background-color: #ccc;
   cursor: not-allowed;
 }
+
+/* Marca em vermelho os produtos com estoque baixo */
+.low-stock {
+  color: red;
+  font-weight: bold;
+}
+
+/* Marca em verde os produtos com estoque alto */
+.high-stock {
+  color: green;
+  font-weight: bold;
+}
