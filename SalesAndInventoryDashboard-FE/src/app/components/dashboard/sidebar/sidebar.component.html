@@ -1,12 +1,11 @@
 <div class="sidebar-container" [ngClass]="{'sidebar-collapsed': !isSidebarOpen}">
     <!-- Sidebar -->
-    <div class="d-flex flex-column flex-shrink-0 bg-light sidebar"
-        #sidebar id="sidebar">
+    <div class="d-flex flex-column flex-shrink-0 sidebar background" #sidebar id="sidebar">
         <!-- Itens da sidebar -->
         <ul class="nav nav-pills flex-column mb-auto nav-sidebar">
             <li class="nav-item">
-                <a [routerLink]="'/all-products'" class="nav-link active" aria-current="page">
-                    <i class="bi bi-house-door"></i>
+                <a [routerLink]="'/'" routerLinkActive="active-link" class="nav-link" aria-current="page" (click)="toggleSidebar()">
+                    <i class="bi bi-boxes"></i>
                     List Products
                 </a>
             </li>

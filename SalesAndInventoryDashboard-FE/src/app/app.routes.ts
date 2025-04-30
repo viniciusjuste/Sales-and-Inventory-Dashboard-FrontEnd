@@ -5,11 +5,6 @@ import { ListProductsComponent } from './components/dashboard/list-products/list
 export const routes: Routes = [
     {
         path: '',
-        component: DashboardComponent
-    },
-
-    {
-        path: 'all-products',
         component: ListProductsComponent,
     }
 ];

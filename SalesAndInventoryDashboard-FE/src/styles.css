@@ -20,6 +20,10 @@
     --z-toast: 40;
     --z-loader: 50;
   }
+
+  .background {
+    background-color: #ccc;
+  }
   
 
 
