@@ -17,7 +17,17 @@ export class ProductService {
  * 
  * @returns An observable that emits an array of products.
  */
-  getProducts(): Observable<any> {
+  getProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(this.apiUrl);
+  }
+
+  /**
+   * Adds a product to the server.
+   * 
+   * @param product The product to be added.
+   * @returns An observable that emits the added product.
+   */
+  addProduct(product: Product): Observable<Product> {
+    return this.http.post<Product>(this.apiUrl, product);
   }
 }
