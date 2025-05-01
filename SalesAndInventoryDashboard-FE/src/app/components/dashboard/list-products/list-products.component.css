@@ -1,7 +1,17 @@
+.table-wrapper-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  background: linear-gradient(to bottom, #5788F8, #7D4EDE);
+  height: 100vh;
+}
+
 .title-wrapper {
   display: flex;
   align-items: center;
   margin: 2rem 0rem 2rem 0rem;
+  font-family: var(--montserrat);
 }
 
 .title-wrapper>h1 {
@@ -14,13 +24,19 @@
   width: 100%;
   border-collapse: collapse;
   margin: 20px 0;
+  font-family: var(--open-sans);
 }
 
 .table th,
 .table td {
   padding: 12px;
   text-align: left;
-  border: 1px solid #ddd;
+}
+
+.table .product-name{
+color: white;
+  font-weight: bold;
+  font-size: 1rem;
 }
 
 .table th {
@@ -37,16 +53,17 @@
 
 .table td {
   font-size: 0.8rem;
-  ;
+  color: #9c9b9c;
+  font-weight: bold;
 }
 
 .table .active {
-  color: green;
+  color: #A4E796;
   font-weight: bold;
 }
 
 .table .inactive {
-  color: red;
+  color: #E04F4C;
 }
 
 /* Estilo para os botões de ação */
@@ -71,13 +88,13 @@
 }
 
 /* Marca em vermelho os produtos com estoque baixo */
-.low-stock {
-  color: red;
+.table .low-stock {
+  color: #E04F4C;
   font-weight: bold;
 }
 
 /* Marca em verde os produtos com estoque alto */
-.high-stock {
-  color: green;
+.table .high-stock {
+  color: #A4E796 ;
   font-weight: bold;
 }
