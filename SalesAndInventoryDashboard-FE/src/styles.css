@@ -19,6 +19,9 @@
     --z-modal: 30;
     --z-toast: 40;
     --z-loader: 50;
+
+    --montserrat: 'Montserrat', sans-serif;
+    --open-sans: 'Open Sans', sans-serif;
   }
 
   .background {
