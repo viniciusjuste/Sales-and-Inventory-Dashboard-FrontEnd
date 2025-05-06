@@ -1,6 +1,6 @@
 <div class="sidebar-container" [ngClass]="{'sidebar-collapsed': !isSidebarOpen}">
     <!-- Sidebar -->
-    <div class="d-flex flex-column flex-shrink-0 sidebar background" #sidebar id="sidebar">
+    <div class="d-flex flex-column flex-shrink-0 sidebar background" #sidebar id="sidebar" [class.open]="isSidebarOpen">
         <!-- Itens da sidebar -->
         <ul class="nav nav-pills flex-column mb-auto nav-sidebar">
             <li class="nav-item">
@@ -9,7 +9,7 @@
                     List Products
                 </a>
             </li>
-            <li>
+            <li> 
                 <a [routerLink]="'/add-product'" href="#" class="nav-link link-dark" (click)="toggleSidebar()">
                     <i class="bi bi-box-seam"></i>
                     Add Product
@@ -41,7 +41,7 @@
             </li>
         </ul>
         <!-- Botão de toggle (seta) dentro da sidebar -->
-        <button id="toggleSidebar" class="btn-toggle-sidebar" (click)="toggleSidebar()">
+        <button id="toggleSidebar" class="btn-toggle-sidebar"  (click)="toggleSidebar()">
             <i class="bi" [ngClass]="isSidebarOpen ? 'bi-arrow-left-circle-fill' : 'bi-arrow-right-circle-fill'">
             </i>
         </button>

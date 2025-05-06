@@ -13,4 +13,10 @@ import { SidebarComponent } from './shared/sidebar/sidebar.component';
 })
 export class AppComponent {
   title = 'SalesAndInventoryDashboard-FE';
+
+  sidebarOpen = false;
+
+  onSidebarToggle(isOpen: boolean) {
+    this.sidebarOpen = isOpen;
+  }
 }
