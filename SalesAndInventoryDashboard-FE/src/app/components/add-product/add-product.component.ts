@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Product } from '../../../models/product';
-import { ProductService } from '../../../services/product.service';
+import { ProductService } from '../../services/product.service';
+import { Product } from '../../models/product';
+
 
 @Component({
   selector: 'app-add-product',
