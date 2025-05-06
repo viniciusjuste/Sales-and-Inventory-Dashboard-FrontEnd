@@ -1,49 +1,65 @@
-<div class="sidebar-container" [ngClass]="{'sidebar-collapsed': !isSidebarOpen}">
-    <!-- Sidebar -->
-    <div class="d-flex flex-column flex-shrink-0 sidebar background" #sidebar id="sidebar" [class.open]="isSidebarOpen">
-        <!-- Itens da sidebar -->
-        <ul class="nav nav-pills flex-column mb-auto nav-sidebar">
-            <li class="nav-item">
-                <a [routerLink]="'/'" class="nav-link link-dark" aria-current="page" (click)="toggleSidebar()">
-                    <i class="bi bi-boxes"></i>
-                    List Products
-                </a>
-            </li>
-            <li> 
-                <a [routerLink]="'/add-product'" href="#" class="nav-link link-dark" (click)="toggleSidebar()">
-                    <i class="bi bi-box-seam"></i>
-                    Add Product
-                </a>
-            </li>
-            <li>
-                <a href="#" class="nav-link link-dark">
-                    <svg class="bi me-2" width="16" height="16">
-                        <use xlink:href="#table"></use>
-                    </svg>
-                    Orders
-                </a>
-            </li>
-            <li>
-                <a href="#" class="nav-link link-dark">
-                    <svg class="bi me-2" width="16" height="16">
-                        <use xlink:href="#grid"></use>
-                    </svg>
-                    Products
-                </a>
-            </li>
-            <li>
-                <a href="#" class="nav-link link-dark">
-                    <svg class="bi me-2" width="16" height="16">
-                        <use xlink:href="#people-circle"></use>
-                    </svg>
-                    Customers
-                </a>
-            </li>
-        </ul>
-        <!-- Botão de toggle (seta) dentro da sidebar -->
-        <button id="toggleSidebar" class="btn-toggle-sidebar"  (click)="toggleSidebar()">
-            <i class="bi" [ngClass]="isSidebarOpen ? 'bi-arrow-left-circle-fill' : 'bi-arrow-right-circle-fill'">
-            </i>
-        </button>
-    </div>
+<div #sidebar class="sidebar" (mouseenter)="toggleSidebar()" (mouseleave)="toggleSidebar()">
+    <ul>
+        <!-- Logo -->
+        <li class="logo">
+            <a href="#">
+                <span class="icon"><i class="bi bi-box-seam"></i></span>
+                <span class="title">Logo of site</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="#">
+                <span class="icon"><i class="bi bi-box-seam"></i></span>
+                <span class="title">Dashboard</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="#">
+                <span class="icon"><i class="bi bi-box-seam"></i></span>
+                <span class="title">Dashboard</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="#">
+                <span class="icon"><i class="bi bi-box-seam"></i></span>
+                <span class="title">Dashboard</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="#">
+                <span class="icon"><i class="bi bi-box-seam"></i></span>
+                <span class="title">Dashboard</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="#">
+                <span class="icon"><i class="bi bi-box-seam"></i></span>
+                <span class="title">Dashboard</span>
+            </a>
+        </li>
+
+        <li class="account">
+            <!-- Usar Profile -->
+            <a href="#">
+                <span class="icon">
+                    <div class="img-box">
+                        <img src="/assets/images/sidebar/sub-zero-profile.webp" alt="User Profile">
+                    </div>
+                </span>
+                <span class="title">Hannah Walker</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="#">
+                <span class="icon"><i class="bi bi-box-seam"></i></span>
+                <span class="title">Logout</span>
+            </a>
+        </li>
+    </ul>
 </div>
