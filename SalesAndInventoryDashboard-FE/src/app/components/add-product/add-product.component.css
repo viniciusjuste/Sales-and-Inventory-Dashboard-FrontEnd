@@ -13,3 +13,10 @@
 form {
     z-index: 1;
 }
+
+.btn-add {
+    border-radius: 3rem;
+    background-color: var(--color-blue);
+    color: white;
+    padding: 1rem 1.5rem;
+}
