@@ -1,4 +1,4 @@
-<div #sidebar class="sidebar" (mouseenter)="toggleSidebar()" (mouseleave)="toggleSidebar()">
+<div *ngIf="!isMobile" #sidebar class="sidebar" (mouseenter)="toggleSidebar()" (mouseleave)="toggleSidebar()">
     <ul>
         <!-- Logo -->
         <li class="logo">
