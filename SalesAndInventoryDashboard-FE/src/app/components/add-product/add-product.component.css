@@ -1,9 +1,15 @@
 .section-wrapper {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    height: 100%;
     width: 100%;
+    height: 100vh;
+}
+
+.section-wrapper .container-add {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .form-wrapper {
@@ -19,4 +25,29 @@ form {
     background-color: var(--color-blue);
     color: white;
     padding: 1rem 1.5rem;
+}
+
+@media screen and (max-width: 768px) {
+    .form-wrapper h3 {
+        font-size: 2rem;
+    }
+
+    .form-wrapper {
+        width: 95vw;
+    }
+
+    .container {
+        padding: 0rem;
+        display: flex;
+        justify-content: center;
+    }
+
+    form label {
+        font-size: 1.2rem;
+    }
+
+    .btn-add {
+        margin-top: 2rem !important;
+        font-size: 1.2rem;
+    }
 }
