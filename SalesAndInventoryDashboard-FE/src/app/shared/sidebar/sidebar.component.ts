@@ -1,12 +1,14 @@
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, EventEmitter, HostListener, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { BreakpointObserver, Breakpoints, LayoutModule } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-sidebar',
-  imports: [CommonModule, RouterModule],
+  standalone: true,
+  imports: [CommonModule, RouterModule, LayoutModule],
   templateUrl: './sidebar.component.html',
-  styleUrl: './sidebar.component.css'
+  styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent {
   isSidebarOpen = false;
@@ -15,32 +17,41 @@ export class SidebarComponent {
   @ViewChild('sidebar') sidebar: ElementRef | undefined;
   @Output() sidebarToggle = new EventEmitter<boolean>();
 
-  onInit() {
-    this.onResize();
+  /**
+   * Constructor.
+   *
+   * Listens for changes in the breakpoint size and updates the component's
+   * `isMobile` property accordingly. This is used to determine whether the
+   * component should be displayed as a sidebar or not.
+   *
+   * @param breakpointObserver The BreakpointObserver to observe the breakpoints.
+   */
+  constructor(private breakpointObserver: BreakpointObserver) {
+    this.breakpointObserver.observe([Breakpoints.Handset])
+      .subscribe(result => {
+        this.isMobile = result.matches;
+        console.log('BreakpointObserver - isMobile:', this.isMobile);
+      });
   }
 
-
   /**
-   * Toggles the sidebar's open/closed state.
-   * If the sidebar element is not defined, the function exits early.
+   * Toggles the sidebar open or closed.
+   *
+   * If the sidebar element doesn't exist, this method does nothing.
+   *
+   * Otherwise, it toggles the `isSidebarOpen` property and emits the
+   * `sidebarToggle` event with the new value of `isSidebarOpen`.
    */
-  toggleSidebar() {
+  toggleSidebar(): void {
     if (!this.sidebar) return;
 
     this.isSidebarOpen = !this.isSidebarOpen;
-    this.sidebarToggle.emit(this.isSidebarOpen); 
+    this.sidebarToggle.emit(this.isSidebarOpen);
   }
 
-  @HostListener('window:resize')
-  /**
-   * Listens for window resize events and updates the isMobile flag
-   * based on the current window width.
-   * If the window width is less than or equal to 768px, the isMobile
-   * flag is set to true.
-   * Useful for applying different styles based on mobile/desktop views.
-   */
-  onResize() {
-    this.isMobile = window.innerWidth <= 768;
-   console.log('Window resized:', window.innerWidth);
+   isMenuOpen = false;
+
+  menuOnClick() {
+    this.isMenuOpen = !this.isMenuOpen;
   }
 }

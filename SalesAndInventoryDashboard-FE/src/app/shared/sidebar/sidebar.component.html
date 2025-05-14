@@ -63,3 +63,32 @@
         </li>
     </ul>
 </div>
+
+<!-- Mobile Sidebar -->
+<div id="menu" *ngIf="isMobile">
+    <div id="menu-bar" (click)="menuOnClick()" [ngClass]="{'change': isMenuOpen}">
+        <div id="bar1" class="bar"></div>
+        <div id="bar2" class="bar"></div>
+        <div id="bar3" class="bar"></div>
+    </div>
+    <nav class="nav" [ngClass]="{'change': isMenuOpen}">
+        <ul>
+            <li (click)="menuOnClick()">
+                <a routerLink="/">
+                    <span class="icon"><i class="bi bi-box-seam"></i></span>
+                    <span class="title ms-3">List Products</span>
+                </a>
+            </li>
+            <li (click)="menuOnClick()">
+                <a routerLink="/add-product">
+                    <span class="icon"><i class="bi bi-box-seam"></i></span>
+                    <span class="title ms-3">Add Product</span>
+                </a>
+            </li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Blog</a></li>
+        </ul>
+    </nav>
+</div>
+
+<div class="menu-bg" [ngClass]="{'change-bg': isMenuOpen}"></div>
