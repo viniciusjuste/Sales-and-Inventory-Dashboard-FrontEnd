@@ -32,8 +32,8 @@
   text-align: left;
 }
 
-.table .product-name{
-color: white;
+.table .product-name {
+  color: white;
   font-weight: bold;
   font-size: 1rem;
 }
@@ -94,6 +94,47 @@ color: white;
 
 /* Marca em verde os produtos com estoque alto */
 .table .high-stock {
-  color: #A4E796 ;
+  color: #A4E796;
   font-weight: bold;
+}
+
+@media screen and (max-width: 768px) {
+  .container-fluid {
+    padding: 0.3rem !important;
+    margin-top: 3rem;
+  }
+
+  .table-wrapper-container {
+    padding: 0rem;
+    height: auto;
+  }
+
+  .table-container {
+    width: 100%;
+    margin: 0 auto;
+    overflow-x: auto;
+  }
+
+  .title-wrapper>h1 {
+    font-size: 4rem;
+  }
+
+  .table th,
+  .table td {
+    font-size: 0.9rem;
+    padding: 14px;
+  }
+
+  .table .product-name {
+    font-size: 1.1rem;
+  }
+
+  .table-action-btn {
+    width: 80px;
+    padding: 6px 12px;
+  }
+
+  .title-wrapper h1 {
+    font-size: 2.5rem;
+  }
 }
