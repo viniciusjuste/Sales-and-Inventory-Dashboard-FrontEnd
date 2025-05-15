@@ -27,12 +27,12 @@ export class SidebarComponent {
    * @param breakpointObserver The BreakpointObserver to observe the breakpoints.
    */
   constructor(private breakpointObserver: BreakpointObserver) {
-    this.breakpointObserver.observe([Breakpoints.Handset])
-      .subscribe(result => {
-        this.isMobile = result.matches;
-        console.log('BreakpointObserver - isMobile:', this.isMobile);
-      });
-  }
+  this.breakpointObserver.observe(['(max-width: 1000px)'])
+    .subscribe(result => {
+      this.isMobile = result.matches;
+      console.log('BreakpointObserver - isMobile:', this.isMobile);
+    });
+}
 
   /**
    * Toggles the sidebar open or closed.
