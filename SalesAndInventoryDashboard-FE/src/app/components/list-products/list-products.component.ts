@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, viewChild, ViewChild } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
@@ -14,10 +14,15 @@ import { Product } from '../../models/product';
 })
 export class ListProductsComponent implements OnInit {
 
+  @ViewChild('editModal') editModal!: ElementRef;
+  @ViewChild('deleteModal') deleteModal!: ElementRef;
+
   product$!: Observable<Product>;
   products$!: Observable<Product[]>;
 
-  constructor(private productService: ProductService) {}
+  modalIsOpen = false;
+
+  constructor(private productService: ProductService) { }
 
   ngOnInit(): void {
     this.getProducts();
@@ -31,4 +36,7 @@ export class ListProductsComponent implements OnInit {
     this.products$ = this.productService.getProducts();
   }
 
+  toggleModal() {
+    this.modalIsOpen = !this.modalIsOpen;
+  }
 }
