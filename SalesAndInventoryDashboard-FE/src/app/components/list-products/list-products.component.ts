@@ -20,7 +20,7 @@ export class ListProductsComponent implements OnInit {
   product$!: Observable<Product>;
   products$!: Observable<Product[]>;
 
-  modalIsOpen = false;
+  modalIsOpen = true;
 
   constructor(private productService: ProductService) { }
 
