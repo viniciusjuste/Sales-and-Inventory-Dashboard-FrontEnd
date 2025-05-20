@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, viewChild, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit, viewChild, ViewChild } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
@@ -21,6 +21,9 @@ export class ListProductsComponent implements OnInit {
   product$!: Observable<Product>;
   products$!: Observable<Product[]>;
 
+  searchTerm: string = '';
+  products: Product[] = [];
+
   productId: number = 0;
   name: string = '';
   description: string = '';
@@ -31,10 +34,44 @@ export class ListProductsComponent implements OnInit {
 
   modalIsOpen = false;
 
+  isMobile: boolean = false;
+
   constructor(private productService: ProductService) { }
 
   ngOnInit(): void {
     this.getProducts();
+    this.checkIfMobile();
+
+    this.products$.subscribe(data => {
+      this.products = data;
+    });
+  }
+
+  /**
+   * Returns a filtered list of products based on the search term.
+   *
+   * If the search term is empty, returns the original list of products.
+   * Otherwise, returns a list of products whose name contains the search term.
+   * The filtering is case-insensitive.
+   * @returns A filtered list of products.
+   */
+  filteredProducts(): Product[] {
+    const term = this.searchTerm.toLowerCase().trim();
+    if (!term) return this.products;
+
+    return this.products.filter(product =>
+      product.name.toLowerCase().includes(term)
+    );
+  }
+
+
+  @HostListener('window:resize', [])
+  onResize() {
+    this.checkIfMobile();
+  }
+
+  private checkIfMobile() {
+    this.isMobile = window.innerWidth < 768; // você pode ajustar esse breakpoint
   }
 
   /**
@@ -67,11 +104,11 @@ export class ListProductsComponent implements OnInit {
     });
   }
 
-/**
- * Constructs a Product object using the current form inputs.
- * 
- * @returns A Product object with fields populated from the component's properties.
- */
+  /**
+   * Constructs a Product object using the current form inputs.
+   * 
+   * @returns A Product object with fields populated from the component's properties.
+   */
   private buildProduct(): Product {
     return {
       id: this.productId,

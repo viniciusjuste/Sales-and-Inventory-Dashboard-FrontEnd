@@ -1,114 +1,32 @@
-.table-wrapper-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  height: 100vh;
-}
-
-.title-wrapper {
-  display: flex;
-  align-items: center;
-  margin: 2rem 0rem 2rem 0rem;
+.list-products {
   font-family: var(--montserrat);
 }
 
-.title-wrapper>h1 {
-  font-size: 3.5rem;
-  font-weight: 700;
-}
-
-/* Estilos para a tabela */
-.table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 20px 0;
-  font-family: var(--open-sans);
-}
-
-.table th,
-.table td {
-  padding: 12px;
-  text-align: left;
-}
-
-.table .product-name {
-  color: white;
-  font-weight: bold;
-  font-size: 1rem;
-}
-
-.table th {
-  color: white;
-}
-
-.table tr:nth-child(even) {
-  background-color: #f2f2f2;
-}
-
-.table tr:hover {
-  background-color: #ddd;
-}
-
-.table td {
-  font-size: 0.8rem;
-  color: #9c9b9c;
+.list-products h1 {
+  font-size: 3rem;
   font-weight: bold;
 }
 
-.table .active {
-  color: #A4E796;
+.list-products .p-title {
+  font-size: 2rem;
   font-weight: bold;
 }
 
-.table .inactive {
-  color: #E04F4C;
-}
-
-/* Estilo para os botões de ação */
-.table-action-btns {
-  justify-content: center;
-  display: flex;
-  gap: 0.7rem;
-}
-
-.table-action-btn {
-  width: 66px;
-  padding: 5px 10px;
-  border: none;
-  cursor: pointer;
-  border-radius: 0.5rem;
-  transition: background-color 0.3s ease;
-}
-
-.table-action-btn.disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
-}
-
-/* Marca em vermelho os produtos com estoque baixo */
-.table .low-stock {
-  color: #E04F4C;
-  font-weight: bold;
-}
-
-/* Marca em verde os produtos com estoque alto */
-.table .high-stock {
-  color: #A4E796;
-  font-weight: bold;
+.cards-wrapper {
+  padding-top: 1rem !important;
 }
 
 .modal {
   position: absolute;
   display: flex;
   align-items: center;
-  width: 100%; 
-  height: 100%; 
+  width: 100%;
+  height: 100%;
   backdrop-filter: blur(5px);
-  background-color: rgba(0,0,0,0.4); 
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
-.modal-dialog{
+.modal-dialog {
   width: 100%;
   max-width: 70% !important;
 }
@@ -123,66 +41,57 @@ form {
 }
 
 .btn-add {
-    border-radius: 3rem;
-    background-color: var(--color-blue);
-    color: white;
-    padding: 1rem 1.5rem;
+  border-radius: 3rem;
+  background-color: var(--color-blue);
+  color: white;
+  padding: 1rem 1.5rem;
 }
 
 .btn_close {
-    border-radius: 3rem;
-    background-color: red;
-    color: white;
-    padding: 1rem 1.5rem;
-    width: 9rem;
+  border-radius: 3rem;
+  background-color: red;
+  color: white;
+  padding: 1rem 1.5rem;
+  width: 9rem;
 }
 
-@media screen and (max-width: 768px) {
-  .container-fluid {
-    padding: 0.3rem !important;
-    margin-top: 3rem;
+@media screen and (max-width: 1000px) {
+  .list-products {
+    padding-top: 6rem !important;
   }
 
-  .table-wrapper-container {
-    padding: 0rem;
-    height: auto;
+  .cards-wrapper {
+    padding-top: 1rem !important;
   }
 
-  .table-container {
-    width: 100%;
-    margin: 0 auto;
-    overflow-x: auto;
-  }
+  @media screen and (max-width: 768px) {
+    .container-fluid {
+      padding: 0.3rem !important;
+      margin-top: 3rem;
+    }
 
-  .title-wrapper>h1 {
-    font-size: 4rem;
-  }
-
-  .table th,
-  .table td {
-    font-size: 0.9rem;
-    padding: 14px;
-  }
-
-  .table .product-name {
-    font-size: 1.1rem;
-  }
-
-  .table-action-btn {
-    width: 80px;
-    padding: 6px 12px;
-  }
-
-  .title-wrapper h1 {
-    font-size: 2.5rem;
-  }
-
-   form label {
-        font-size: 1.2rem;
+    form label {
+      font-size: 1.2rem;
     }
 
     .btn-add {
-        margin-top: 2rem !important;
-        font-size: 1.2rem;
+      margin-top: 2rem !important;
+      font-size: 1.2rem;
     }
+
+    .btn_close {
+      margin-top: 2rem !important;
+      font-size: 1.2rem;
+      width: 10rem;
+    }
+
+    .modal-dialog {
+      width: 100%;
+      max-width: 100% !important;
+    }
+
+    .modal-footer {
+      justify-content: center;
+    }
+  }
 }
