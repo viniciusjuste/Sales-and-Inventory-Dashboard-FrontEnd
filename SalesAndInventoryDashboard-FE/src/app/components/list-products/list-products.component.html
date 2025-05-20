@@ -34,9 +34,9 @@
               {{ product.isActive ? 'Active' : 'Inactive' }}
             </td>
             <td class="table-action-btns">
-              <button class="table-action-btn btn btn-success" (click)="toggleModal()">Edit</button>
+              <button class="table-action-btn btn btn-success" (click)="openModal(product)">Edit</button>
               <button class="table-action-btn btn btn-danger" [class.disabled]="!product.isActive"
-                (click)="toggleModal()">
+                (click)="closeModal()">
                 Delete
               </button>
             </td>
@@ -53,7 +53,7 @@
     <div class="modal-content">
       <div class="modal-header d-flex justify-content-between">
         <h5 class="modal-title">Edit Product</h5>
-        <button type="button" class="close" (click)="toggleModal()" aria-label="Close">
+        <button type="button" class="close" (click)="closeModal()" aria-label="Close">
           <span aria-hidden="true"><i class="bi bi-x-lg"></i></span>
         </button>
       </div>
@@ -62,13 +62,15 @@
           <div class="d-flex flex-wrap gap-4 justify-content-center">
             <!-- Coluna 1 -->
             <div class="d-flex flex-column flex-fill" style="min-width: 300px; flex: 1;">
+              <input type="hidden" [(ngModel)]="productId" name="productId" />
+
               <!-- Nome -->
               <div class="mb-3">
                 <label for="productName" class="form-label">Name</label>
                 <div class="input-group">
                   <span class="input-group-text"><i class="bi bi-tag"></i></span>
                   <input type="text" class="form-control" id="productName" name="productName"
-                    placeholder="Enter product name" />
+                    placeholder="Enter product name" [(ngModel)]="name" name="name" />
                 </div>
               </div>
 
@@ -78,7 +80,7 @@
                 <div class="input-group">
                   <span class="input-group-text"><i class="bi bi-card-text"></i></span>
                   <textarea class="form-control" id="productDescription" name="productDescription" rows="3"
-                    placeholder="Enter description"></textarea>
+                    placeholder="Enter description" [(ngModel)]="description" name="description"></textarea>
                 </div>
               </div>
 
@@ -87,8 +89,8 @@
                 <label for="productPrice" class="form-label">Price</label>
                 <div class="input-group">
                   <span class="input-group-text"><i class="bi bi-currency-dollar"></i></span>
-                  <input type="number" class="form-control" id="productPrice" name="productPrice" placeholder="0.00"
-                    step="0.01" />
+                  <input type="number" class="form-control" id="productPrice" name="productPrice" name="productPrice"
+                    placeholder="0.00" step="0.01" [(ngModel)]="price" />
                 </div>
               </div>
 
@@ -98,7 +100,7 @@
                 <div class="input-group">
                   <span class="input-group-text"><i class="bi bi-box-seam"></i></span>
                   <input type="number" class="form-control" id="stockQuantity" name="stockQuantity"
-                    placeholder="Enter stock quantity" />
+                    placeholder="Enter stock quantity" [(ngModel)]="stockQuantity" name="stockQuantity" />
                 </div>
               </div>
             </div>
@@ -110,13 +112,15 @@
                 <label for="category" class="form-label">Category</label>
                 <div class="input-group">
                   <span class="input-group-text"><i class="bi bi-tags"></i></span>
-                  <input type="text" class="form-control" id="category" name="category" placeholder="Enter category" />
+                  <input type="text" class="form-control" id="category" name="category" placeholder="Enter category"
+                    [(ngModel)]="category" />
                 </div>
               </div>
 
               <!-- Ativo -->
               <div class="form-check mb-3 mt-2">
-                <input class="form-check-input" type="checkbox" id="isActive" name="isActive" />
+                <input class="form-check-input" type="checkbox" id="isActive" name="isActive" [(ngModel)]="isActive"
+                  name="isActive" />
                 <label class="form-check-label" for="isActive">Active</label>
               </div>
 
@@ -128,10 +132,10 @@
       </div>
       <div class="modal-footer">
         <!-- Botão -->
-        <button type="button" class="btn btn-add mt-auto">
+        <button type="button" class="btn btn-add mt-auto" (click)="updateProduct()">
           <i class="bi bi-check2-circle me-1"></i>Save Product
         </button>
-        <button type="button" class="btn btn_close mt-auto" (click)="toggleModal()">Close</button>
+        <button type="button" class="btn btn_close mt-auto" (click)="closeModal()">Close</button>
       </div>
     </div>
   </div>

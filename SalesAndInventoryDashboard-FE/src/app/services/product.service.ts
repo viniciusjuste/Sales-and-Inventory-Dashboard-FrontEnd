@@ -8,15 +8,15 @@ import { Product } from '../models/product';
 })
 export class ProductService {
 
-  constructor(private http : HttpClient) { }
+  constructor(private http: HttpClient) { }
 
   apiUrl = 'http://localhost:5292/products';
 
-/**
- * Fetches a list of products from the server.
- * 
- * @returns An observable that emits an array of products.
- */
+  /**
+   * Fetches a list of products from the server.
+   * 
+   * @returns An observable that emits an array of products.
+   */
   getProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(this.apiUrl);
   }
@@ -29,5 +29,9 @@ export class ProductService {
    */
   addProduct(product: Product): Observable<Product> {
     return this.http.post<Product>(this.apiUrl, product);
+  }
+
+  updateProduct(product: Product): Observable<Product> {
+    return this.http.patch<Product>(`${this.apiUrl}/${product.id}`, product);
   }
 }
