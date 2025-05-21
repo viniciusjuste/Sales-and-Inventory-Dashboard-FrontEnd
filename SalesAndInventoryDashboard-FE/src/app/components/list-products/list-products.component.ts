@@ -33,6 +33,7 @@ export class ListProductsComponent implements OnInit {
   isActive: boolean = false;
 
   modalIsOpen = false;
+  modaldeleteIsOpen = false;
 
   isMobile: boolean = false;
 
@@ -41,10 +42,6 @@ export class ListProductsComponent implements OnInit {
   ngOnInit(): void {
     this.getProducts();
     this.checkIfMobile();
-
-    this.products$.subscribe(data => {
-      this.products = data;
-    });
   }
 
   /**
@@ -74,12 +71,24 @@ export class ListProductsComponent implements OnInit {
     this.isMobile = window.innerWidth < 768; // você pode ajustar esse breakpoint
   }
 
+  
   /**
-   * Retrieves a list of products from the server and assigns it to the "products$" observable.
-   * This function is called in the component's OnInit lifecycle hook.
+   * Fetches a list of products from the server and stores them in the
+   * component's `products` property.
+   *
+   * Subscribes to the `getProducts` observable from the `ProductService` and
+   * updates the component's `products` property with the response.
+   * Logs an error to the console if the subscription fails.
    */
   getProducts() {
-    this.products$ = this.productService.getProducts();
+     this.productService.getProducts().subscribe({
+    next: (response) => {
+      this.products = response;
+    },
+    error: (error) => {
+      console.error('Erro ao buscar produtos:', error);
+    }
+  });
   }
 
   /**
@@ -121,6 +130,26 @@ export class ListProductsComponent implements OnInit {
     };
   }
 
+/**
+ * Deletes a product from the server using the Product service.
+ * Calls the Product service's deleteProduct method with the current productId.
+ * Logs a success message if successful and refreshes the product list.
+ * Closes the delete modal after attempting to delete the product.
+ * Logs an error message if an error occurs during the deletion process.
+ */
+  deleteProduct() {
+    this.productService.deleteProduct(this.productId).subscribe({
+      next: (response) => {
+        console.log('Product deleted successfully:', response);
+        this.getProducts();
+        this.closeDeleteModal();
+      },
+      error: (error) => {
+        console.error('Error deleting product:', error);
+      }
+    });
+  }
+
   /**
    * Opens the modal by setting the modalIsOpen property to true and
    * filling in the form fields with the product's properties.
@@ -139,5 +168,19 @@ export class ListProductsComponent implements OnInit {
 
   closeModal() {
     this.modalIsOpen = false;
+  }
+
+  /**
+   * Opens the delete modal by setting the modaldeleteIsOpen property to true
+   * and filling in the form fields with the product's properties.
+   * @param product The product whose properties will fill in the form fields.
+   */
+  openDeleteModal(product: Product) {
+    this.productId = product.id || 0;
+    this.modaldeleteIsOpen = true;
+  }
+
+  closeDeleteModal() {
+    this.modaldeleteIsOpen = false;
   }
 }

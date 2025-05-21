@@ -31,7 +31,23 @@ export class ProductService {
     return this.http.post<Product>(this.apiUrl, product);
   }
 
+  /**
+   * Updates a product in the server.
+   * 
+   * @param product The product to be updated.
+   * @returns An observable that emits the updated product.
+   */
   updateProduct(product: Product): Observable<Product> {
     return this.http.patch<Product>(`${this.apiUrl}/${product.id}`, product);
+  }
+
+  /**
+   * Deletes a product from the server.
+   * 
+   * @param productId The id of the product to be deleted.
+   * @returns An observable that emits nothing.
+   */
+  deleteProduct(productId : number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${productId}`);
   }
 }

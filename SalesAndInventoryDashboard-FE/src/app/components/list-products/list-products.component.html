@@ -62,7 +62,7 @@
       </button>
       <button
         class="bg-red-500 hover:bg-red-600 text-white py-1.5 px-4 rounded-lg text-sm transition disabled:opacity-50"
-        [disabled]="!product.isActive" (click)="closeModal()">
+        [disabled]="!product.isActive" (click)="openDeleteModal(product)">
         Delete
       </button>
     </div>
@@ -169,24 +169,25 @@
 </div>
 
 <!-- Modal Delete -->
-<div class="modal" *ngIf="modalIsOpen" #deleteModal tabindex="-1" role="dialog">
+<div class="modal" *ngIf="modaldeleteIsOpen" #deleteModal tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header d-flex justify-content-between">
         <h5 class="modal-title">Delete Product</h5>
-        <button type="button" class="close" (click)="closeModal()" aria-label="Close">
+        <button type="button" class="close" (click)="closeDeleteModal()" aria-label="Close">
           <span aria-hidden="true"><i class="bi bi-x-lg"></i></span>
         </button>
       </div>
       <div class="modal-body">
-        <p>Modal body text goes here.</p>
+        <input type="hidden" [(ngModel)]="productId" name="productId" />
+        <p>Are you sure you want to delete this product?</p>
       </div>
      <div class="modal-footer">
         <!-- Botão -->
-        <button type="button" class="btn btn-add mt-auto" (click)="updateProduct()">
-          <i class="bi bi-check2-circle me-1"></i>Save Product
+        <button type="button" class="btn btn-add mt-auto" (click)="deleteProduct()">
+          <i class="bi bi-check2-circle me-1"></i>Delete Product
         </button>
-        <button type="button" class="btn btn_close mt-auto" (click)="closeModal()">Close</button>
+        <button type="button" class="btn btn_close mt-auto" (click)="closeDeleteModal()">Close</button>
       </div>
     </div>
   </div>
