@@ -2,15 +2,9 @@
 <div *ngIf="fetchState === FetchState.ERROR">Error: Deu erro</div> -->
 
 <div *ngIf="fetchState === FetchState.SUCCESS">
-  <div class="list-products">
-    <h1 class="text-2xl font-bold text-center text-teal-400 mb-4 mt-1">Products List</h1>
-    <p class="text-center text-gray-400 mb-4 p-title">Manage your products efficiently.</p>
-  </div>
-
   <!-- Input search -->
-  <div class="p-4">
-    <input type="text" [(ngModel)]="searchTerm" placeholder="Search by name..."
-      class="w-full md:w-1/2 p-2 rounded border border-gray-500 bg-zinc-800 text-white placeholder-gray-400" />
+  <div class="p-4 input-wrapper">
+    <input type="text" [(ngModel)]="searchTerm" placeholder="Search by name..." class="w-full placeholder-gray-400" />
   </div>
 
   <!-- Cards products -->
@@ -18,8 +12,8 @@
     class="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-4 cards-wrapper">
     <div class="bg-zinc-900 text-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300"
       *ngFor="let product of filteredProducts(); let i = index">
-      <div class="flex justify-between items-center mb-3">
-        <h2 class="text-xl font-semibold text-teal-400">{{ product.name }}</h2>
+      <div class="flex justify-between items-center mb-3 name-wrapper">
+        <h2 class="text-xl font-semibold">{{ product.name }}</h2>
         <span class="text-sm text-gray-400">#{{ i + 1 }}</span>
       </div>
 
@@ -60,12 +54,11 @@
       </p>
 
       <div class="flex gap-3 mt-4">
-        <button class="bg-teal-500 hover:bg-teal-600 text-white py-1.5 px-4 rounded-lg text-sm transition"
-          (click)="openModal(product)">
+        <button class="btn-edit text-white py-1.5 px-4 rounded-lg text-sm transition" (click)="openModal(product)">
           Edit
         </button>
         <button
-          class="bg-red-500 hover:bg-red-600 text-white py-1.5 px-4 rounded-lg text-sm transition disabled:opacity-50"
+          class="btn-delete text-white py-1.5 px-4 rounded-lg text-sm transition disabled:opacity-50"
           [disabled]="!product.isActive" (click)="openDeleteModal(product)">
           Delete
         </button>
@@ -96,7 +89,7 @@
                 <input type="hidden" [(ngModel)]="productId" name="productId" />
 
                 <!-- Nome -->
-                <div class="mb-3">
+                <div>
                   <label for="productName" class="form-label">Name</label>
                   <div class="input-group">
                     <span class="input-group-text"><i class="bi bi-tag"></i></span>
@@ -106,17 +99,17 @@
                 </div>
 
                 <!-- Descrição -->
-                <div class="mb-3">
+                <div>
                   <label for="productDescription" class="form-label">Description</label>
                   <div class="input-group">
-                    <span class="input-group-text"><i class="bi bi-card-text"></i></span>
+                    <span class="input-group-text textarea-icon"><i class="bi bi-card-text"></i></span>
                     <textarea class="form-control" id="productDescription" name="productDescription" rows="3"
                       placeholder="Enter description" [(ngModel)]="description" name="description"></textarea>
                   </div>
                 </div>
 
                 <!-- Preço -->
-                <div class="mb-3">
+                <div>
                   <label for="productPrice" class="form-label">Price</label>
                   <div class="input-group">
                     <span class="input-group-text"><i class="bi bi-currency-dollar"></i></span>
@@ -126,7 +119,7 @@
                 </div>
 
                 <!-- Quantidade em Estoque -->
-                <div class="mb-3">
+                <div>
                   <label for="stockQuantity" class="form-label">Stock Quantity</label>
                   <div class="input-group">
                     <span class="input-group-text"><i class="bi bi-box-seam"></i></span>
@@ -139,7 +132,7 @@
               <!-- Coluna 2 -->
               <div class="d-flex flex-column flex-fill" style="min-width: 300px; flex: 1;">
                 <!-- Categoria -->
-                <div class="mb-3">
+                <div>
                   <label for="category" class="form-label">Category</label>
                   <div class="input-group">
                     <span class="input-group-text"><i class="bi bi-tags"></i></span>
@@ -149,7 +142,7 @@
                 </div>
 
                 <!-- Ativo -->
-                <div class="form-check mb-3 mt-2">
+                <div class="form-check mt-2">
                   <input class="form-check-input" type="checkbox" id="isActive" name="isActive" [(ngModel)]="isActive"
                     name="isActive" />
                   <label class="form-check-label" for="isActive">Active</label>
