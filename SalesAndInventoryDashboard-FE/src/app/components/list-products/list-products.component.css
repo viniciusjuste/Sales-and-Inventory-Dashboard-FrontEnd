@@ -17,6 +17,14 @@
 
 .btn-edit {
   background-color: var(--purple);
+  border-radius: 3rem;
+  width: 7rem;
+}
+
+.btn-delete{
+  background-color: var(--red);
+  border-radius: 3rem;
+  width: 7rem;
 }
 
 .cards-wrapper {
@@ -132,10 +140,6 @@ form .form-check-label {
   color: var(--white);
   padding: 1rem 1.5rem;
   width: 9rem;
-}
-
-.btn-delete{
-  background-color: var(--red);
 }
 
 @media screen and (max-width: 1000px) {

@@ -1,8 +1,8 @@
 <div class="section-wrapper">
   <div class="container-fluid container-add mt-5">
-    <div class="card shadow-lg rounded-4 p-4 form-wrapper !bg-zinc-900 text-white">
+    <div class="card shadow-lg rounded-4 p-4 form-wrapper text-white">
       <h3 class="text-center mb-4">
-        <i class="bi bi-box-seam"></i> Add Product
+        <i class="bi bi-bag-plus-fill"></i> Add Product
       </h3>
       <form>
         <div class="d-flex flex-wrap gap-4 justify-content-center">
@@ -22,7 +22,7 @@
             <div class="mb-3">
               <label for="productDescription" class="form-label">Description</label>
               <div class="input-group">
-                <span class="input-group-text"><i class="bi bi-card-text"></i></span>
+                <span class="input-group-text textarea-icon"><i class="bi bi-card-text"></i></span>
                 <textarea class="form-control" id="productDescription" name="productDescription" rows="3"
                   placeholder="Enter description" [(ngModel)]="description"></textarea>
               </div>
@@ -62,7 +62,7 @@
             </div>
 
             <!-- Ativo -->
-            <div class="form-check mb-3 mt-2">
+            <div class="form-check">
               <input class="form-check-input" type="checkbox" id="isActive" name="isActive" [(ngModel)]="isActive" />
               <label class="form-check-label" for="isActive">Active</label>
             </div>
@@ -71,7 +71,7 @@
             <div class="flex-grow-1"></div>
 
             <!-- Botão -->
-            <button type="submit" class="btn btn-add w-100 mt-auto !bg-teal-500" (click)="addProduct()">
+            <button type="submit" class="btn btn-add w-100 mt-auto" (click)="addProduct()">
               <i class="bi bi-check2-circle me-1"></i>Save Product
             </button>
           </div>
