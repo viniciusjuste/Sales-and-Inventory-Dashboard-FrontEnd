@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { ProductService } from '../../services/product.service';
 import { Product } from '../../models/product';
 import { FormsModule } from '@angular/forms';
+import { FetchState } from '../../models/FetchState';
 
 @Component({
   selector: 'app-list-products',
@@ -20,6 +21,11 @@ export class ListProductsComponent implements OnInit {
 
   product$!: Observable<Product>;
   products$!: Observable<Product[]>;
+
+  fetchState = FetchState.DEFAULT;
+  FetchState = FetchState;
+  productData: Product[] = [];
+
 
   searchTerm: string = '';
   products: Product[] = [];
@@ -81,12 +87,16 @@ export class ListProductsComponent implements OnInit {
    * Logs an error to the console if the subscription fails.
    */
   getProducts() {
-     this.productService.getProducts().subscribe({
+    this.fetchState = FetchState.LOADING;
+
+    this.productService.getProducts().subscribe({
     next: (response) => {
       this.products = response;
+      this.fetchState = FetchState.SUCCESS;
     },
     error: (error) => {
       console.error('Erro ao buscar produtos:', error);
+      this.fetchState = FetchState.ERROR;
     }
   });
   }
