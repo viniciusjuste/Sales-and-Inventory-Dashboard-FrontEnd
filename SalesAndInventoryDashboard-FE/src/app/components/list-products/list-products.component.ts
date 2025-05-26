@@ -24,11 +24,10 @@ export class ListProductsComponent implements OnInit {
 
   fetchState = FetchState.DEFAULT;
   FetchState = FetchState;
-  productData: Product[] = [];
 
 
   searchTerm: string = '';
-  products: Product[] = [];
+  productsData: Product[] = [];
 
   productId: number = 0;
   name: string = '';
@@ -60,9 +59,9 @@ export class ListProductsComponent implements OnInit {
    */
   filteredProducts(): Product[] {
     const term = this.searchTerm.toLowerCase().trim();
-    if (!term) return this.products;
+    if (!term) return this.productsData;
 
-    return this.products.filter(product =>
+    return this.productsData.filter(product =>
       product.name.toLowerCase().includes(term)
     );
   }
@@ -91,7 +90,7 @@ export class ListProductsComponent implements OnInit {
 
     this.productService.getProducts().subscribe({
     next: (response) => {
-      this.products = response;
+      this.productsData = response;
       this.fetchState = FetchState.SUCCESS;
     },
     error: (error) => {
