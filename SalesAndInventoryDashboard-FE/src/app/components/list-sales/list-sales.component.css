@@ -1,0 +1,42 @@
+:root{
+     --montserrat: 'Montserrat', sans-serif;
+  --open-sans: 'Open Sans', sans-serif;
+  --font-sidebar: 'Poppins', sans-serif;
+
+  --color-blue: #4796BD;
+  --black-light: #2b2b2b;
+  --black-dark: #0F0F0F;
+  --purple: #6F5E9A;
+  --white: #FFFFFF;
+  --red: #FF0000;
+}
+
+.input-wrapper input {
+  border-radius: 3rem;
+  padding: 1rem 1.5rem;
+  border: none;
+  outline: none;
+  background-color: var(--black-light);
+  color: var(--white);
+}
+
+.sale-title {
+    font-family: var(--poppins);
+    font-size: 2rem;
+    font-weight: bolder;
+    color: var(--purple);
+    margin-bottom: 1rem !important;
+}
+
+.sale-items-title {
+    font-family: var(--poppins);
+    font-size: 1.5rem;
+    font-weight: bolder;
+    color: var(--purple);
+    margin-bottom: 1rem !important;
+}
+
+.text-sm {
+    font-family: var(--poppins);
+    color: var(--white);
+}
