@@ -78,4 +78,17 @@ export class ListSalesComponent {
       }
     });
   }
+
+/**
+ * Calculates the total sales amount for a given sale.
+ *
+ * This method iterates over the sale items and sums up the product
+ * of the unit price and quantity for each item to compute the total sales amount.
+ *
+ * @param sale The sale object containing items to calculate the total sales amount.
+ * @returns The total sales amount as a number.
+ */
+  getTotalSales(sale: Sale): number {
+    return sale.items.reduce((total, item) => total + (item.unitPrice * item.quantity), 0);
+  }
 }

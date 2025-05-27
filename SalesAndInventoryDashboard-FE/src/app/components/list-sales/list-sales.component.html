@@ -9,27 +9,39 @@
 
   <!-- Cards products -->
   <div *ngIf="filteredSales().length > 0; else noProducts"
-    class="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-4 cards-wrapper">
-    <div class="bg-zinc-900 text-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300"
-      *ngFor="let sale of filteredSales(); let i = index">
-      <div class="flex justify-between items-center mb-3 name-wrapper">
-        <h2 class="text-xl font-semibold">{{sale.id }}</h2>
-        <span class="text-sm text-gray-400">#{{ i + 1 }}</span>
+    class="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-4">
+
+    <div *ngFor="let sale of filteredSales(); let i = index"
+      class="bg-zinc-800 text-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition duration-300">
+
+      <!-- Cabeçalho da venda -->
+      <div class="mb-4">
+        <h2 class="text-xl font-bold mb-1">Venda #{{ sale.id }}</h2>
+        <p class="text-sm text-gray-400">Data:
+          <span class="text-gray-200">{{ sale.date | date:'short' }}</span>
+        </p>
+        <p class="text-sm text-gray-400">Total:
+          <!-- <span class="text-green-400 font-medium">R$ {{ sale.total | number:'1.2-2' }}</span> -->
+          <span class="text-green-400 font-medium">R$ total</span>
+        </p>
       </div>
 
-      <div class="flex flex-col text-sm text-gray-400 mb-2">
-        <p><span class="text-white font-semibold">Date of sale:</span> {{ sale.date| date:'short' }}</p>
+      <!-- Itens da venda -->
+      <div class="mt-4">
+        <h4 class="text-sm text-gray-300 font-semibold mb-2">Itens da venda:</h4>
+        <ul class="divide-y divide-zinc-700">
+          <li *ngFor="let item of sale.items" class="py-2 flex justify-between items-center text-sm text-gray-200">
+            <span>{{ item.productName }} <span class="text-gray-400">x{{ item.quantity }}</span></span>
+            <span class="text-green-300">R$ {{ (item.unitPrice * item.quantity) | number:'1.2-2' }}</span>
+          </li>
+        </ul>
       </div>
-
-      
-
-      
+      <p>Total da venda: R$ {{ getTotalSales(sale) | number:'1.2-2' }}</p>
     </div>
   </div>
+
 
   <!-- If no products -->
   <ng-template #noProducts>
     <p class="text-center text-gray-400 mt-4">Nenhum produto encontrado.</p>
   </ng-template>
-
- 
