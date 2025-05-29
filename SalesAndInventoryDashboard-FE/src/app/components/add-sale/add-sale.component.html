@@ -1,0 +1,40 @@
+<div class="section-wrapper py-5">
+    <div class="container">
+        <div class="card shadow-lg rounded-4 p-4 form-wrapper text-white">
+            <h3 class="text-center mb-4">
+                <i class="bi bi-bag-plus-fill me-2"></i> Add Sale
+            </h3>
+            <form>
+                <div class="row g-4 justify-content-center">
+                    <!-- Select Product -->
+                    <div class="col-md-6">
+                        <label for="product" class="form-label">Select Product</label>
+                        <select class="form-select" id="product" required>
+                            <option value="">Select one</option>
+                            <option value="1">Product 1</option>
+                            <option value="2">Product 2</option>
+                            <option value="3">Product 3</option>
+                        </select>
+                    </div>
+
+                    <!-- Quantity -->
+                    <div class="col-md-6">
+                        <label for="productName" class="form-label">Quantity</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-tag"></i></span>
+                            <input type="text" class="form-control" id="productName" name="productName"
+                                placeholder="Enter quantity" required>
+                        </div>
+                    </div>
+
+                    <!-- Add Button -->
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-add w-100">
+                            <i class="bi bi-plus-circle me-2"></i> Add
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
