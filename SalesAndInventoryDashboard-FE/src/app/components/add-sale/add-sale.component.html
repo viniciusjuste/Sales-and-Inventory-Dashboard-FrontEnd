@@ -9,7 +9,7 @@
                     <!-- Select Product -->
                     <div class="col-md-6">
                         <label for="product" class="form-label">Select Product</label>
-                        <select class="form-select" id="product" required>
+                        <select class="form-select" id="product" name="productName" [(ngModel)]="productName" required>
                             <option value="">Select one</option>
                             <option value="1">Product 1</option>
                             <option value="2">Product 2</option>
@@ -19,17 +19,17 @@
 
                     <!-- Quantity -->
                     <div class="col-md-6">
-                        <label for="productName" class="form-label">Quantity</label>
+                        <label for="quantity" class="form-label">Quantity</label>
                         <div class="input-group">
                             <span class="input-group-text"><i class="bi bi-tag"></i></span>
-                            <input type="text" class="form-control" id="productName" name="productName"
-                                placeholder="Enter quantity" required>
+                            <input type="number" class="form-control" id="quantity" [(ngModel)]="quantity" name="quantity"
+                                placeholder="Enter quantity" required min="1">
                         </div>
                     </div>
 
                     <!-- Add Button -->
                     <div class="col-12">
-                        <button type="submit" class="btn btn-add w-100">
+                        <button type="submit" class="btn btn-add w-100" (click)="addItem()">
                             <i class="bi bi-plus-circle me-2"></i> Add
                         </button>
                     </div>
