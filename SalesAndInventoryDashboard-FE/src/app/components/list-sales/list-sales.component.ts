@@ -1,11 +1,11 @@
 import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs';
 import { FetchState } from '../../models/FetchState';
-import { SalesService } from '../sales.service';
 import { Sale } from '../../models/Sale';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { SaleService } from '../../services/sale.service';
 
 
 @Component({
@@ -28,7 +28,7 @@ export class ListSalesComponent {
 
   isMobile: boolean = false;
 
-  constructor(private saleService : SalesService) { }
+  constructor(private saleService : SaleService) { }
 
   ngOnInit(): void {
     this.getSales();

@@ -14,6 +14,7 @@ import { Product } from '../../models/product';
 export class AddSaleComponent implements OnInit {
   productName: string = '';
   quantity: number = 0;
+  price: number = 0;
 
   ngOnInit(): void {
     this.getProducts();
@@ -21,9 +22,9 @@ export class AddSaleComponent implements OnInit {
 
   products$!: Observable<Product[]>;
 
-  constructor(private productsService: ProductService) {}
+  constructor(private productsService: ProductService) { }
 
-  itens: { productName: string; quantity: number }[] = [];
+  itens: { productName: string; price: number; quantity: number }[] = [];
 
   /**
    * Adds an item to the sale.
@@ -32,8 +33,8 @@ export class AddSaleComponent implements OnInit {
    * Otherwise, an alert is displayed to the user to fill in the fields correctly.
    */
   addItem() {
-    if (this.productName != '' && this.quantity > 0) {
-      this.itens.push({ productName: this.productName, quantity: this.quantity });
+    if (this.productName != '' && this.quantity > 0 && this.price > 0) {
+      this.itens.push({ productName: this.productName, price: this.price, quantity: this.quantity });
       this.productName = '';
       this.quantity = 0;
       console.log(this.itens);
@@ -42,12 +43,12 @@ export class AddSaleComponent implements OnInit {
     }
   }
 
-/**
- * Initializes the `products$` observable with the list of products from the server.
- * 
- * Subscribes to the `getProducts` observable from the `ProductService` and stores
- * the result in the `products$` property.
- */
+  /**
+   * Initializes the `products$` observable with the list of products from the server.
+   * 
+   * Subscribes to the `getProducts` observable from the `ProductService` and stores
+   * the result in the `products$` property.
+   */
   getProducts() {
     this.products$ = this.productsService.getProducts();
   }
