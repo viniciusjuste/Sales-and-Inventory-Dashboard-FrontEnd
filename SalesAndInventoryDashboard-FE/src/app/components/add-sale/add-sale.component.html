@@ -11,9 +11,9 @@
                         <label for="product" class="form-label">Select Product</label>
                         <select class="form-select" id="product" name="productName" [(ngModel)]="productName" required>
                             <option value="">Select one</option>
-                            <option value="1">Product 1</option>
-                            <option value="2">Product 2</option>
-                            <option value="3">Product 3</option>
+                            <option *ngFor="let product of products$ | async" [value]="product.name">
+                                {{ product.name }}
+                            </option>
                         </select>
                     </div>
 
@@ -26,7 +26,7 @@
                                 placeholder="Enter quantity" required min="1">
                         </div>
                     </div>
-
+ 
                     <!-- Add Button -->
                     <div class="col-12">
                         <button type="submit" class="btn btn-add w-100" (click)="addItem()">
