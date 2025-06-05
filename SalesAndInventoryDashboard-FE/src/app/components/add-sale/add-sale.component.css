@@ -51,4 +51,16 @@ form input {
     color: var(--white);
 }
 
+.btn-add-prod {
+    border-radius: 3rem;
+    background-color: var(--color-blue);
+    color: var(--white);
+    padding: 1rem 1.5rem;
+}
+
+.btn-add-prod:hover {
+    background-color: var(--color-blue);
+    color: var(--white);
+}
+
 

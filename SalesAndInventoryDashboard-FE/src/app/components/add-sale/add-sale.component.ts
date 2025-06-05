@@ -36,12 +36,27 @@ export class AddSaleComponent implements OnInit {
     if (this.productName != '' && this.quantity > 0 && this.price > 0) {
       this.itens.push({ productName: this.productName, price: this.price, quantity: this.quantity });
       this.productName = '';
+      this.price = 0;
       this.quantity = 0;
       console.log(this.itens);
     } else {
       alert('Please fill in all fields correctly.');
     }
   }
+
+/**
+ * Removes an item from the sale.
+ *
+ * This method filters out the specified item from the `itens` array,
+ * effectively removing it from the list of items in the sale.
+ *
+ * @param itemToRemove The item to be removed, identified by its product name,
+ * price, and quantity.
+ */
+  removeItem(itemToRemove: { productName: string; price: number; quantity: number }) {
+  this.itens = this.itens.filter(item => item !== itemToRemove);
+}
+
 
   /**
    * Initializes the `products$` observable with the list of products from the server.
