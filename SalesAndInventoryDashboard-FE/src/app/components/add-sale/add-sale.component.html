@@ -12,9 +12,19 @@
                         <select class="form-select" id="product" name="productName" [(ngModel)]="productName" required>
                             <option value="">Select one</option>
                             <option *ngFor="let product of products$ | async" [value]="product.name">
-                                {{ product.name }} - {{ product.price | currency: 'USD': 'symbol' }}
+                                {{ product.name }} - {{ product.price | currency: 'USD': 'symbol' }} ID: ({{ product.id }})
                             </option>
                         </select>
+                    </div>
+
+                    <!--Product Id -->
+                    <div class="col-md-6">
+                        <label for="productId" class="form-label">Product ID</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-barcode"></i></span>
+                            <input type="text" class="form-control" id="productId" [(ngModel)]="productId"
+                                name="productId" placeholder="Enter product ID" required>
+                        </div>
                     </div>
 
                     <!-- Price -->
@@ -37,6 +47,7 @@
                         </div>
                     </div>
 
+
                     <!-- Add product Button -->
                     <div class="col-md-6 d-flex align-items-end">
                         <button type="submit" class="btn btn-add-prod w-100" (click)="addItem()">
@@ -46,7 +57,7 @@
 
                     <!-- Add sale Button -->
                     <div class="col-12 d-flex align-items-end">
-                        <button type="submit" class="btn btn-add w-100">
+                        <button type="submit" class="btn btn-add w-100" (click)="postSale()">
                             <i class="bi bi-plus-circle me-2"></i> Add Sale
                         </button>
                     </div>
@@ -55,24 +66,24 @@
         </div>
 
         <!-- Lista de produtos adicionados -->
-<div class="mt-5">
-    <h5 class="text-white">Produtos adicionados:</h5>
-    <div *ngIf="itens.length === 0" class="text-white-50">Nenhum produto adicionado ainda.</div>
+        <div class="mt-5">
+            <h5 class="text-white">Produtos adicionados:</h5>
+            <div *ngIf="itens.length === 0" class="text-white-50">Nenhum produto adicionado ainda.</div>
 
-    <div *ngFor="let item of itens" class="card bg-dark text-white mb-2 p-3 rounded-3 shadow-sm">
-        <div class="d-flex justify-content-between align-items-center">
-            <div>
-                <strong>{{ item.productName }}</strong>
-                <div>Quantidade: {{ item.quantity }}</div>
-                <div>Preço: {{ item.price | currency: 'USD' }}</div>
+            <div *ngFor="let item of itens" class="card bg-dark text-white mb-2 p-3 rounded-3 shadow-sm">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <strong>{{ item.productName }}</strong>
+                        <div>Quantidade: {{ item.quantity }}</div>
+                        <div>Preço: {{ item.price | currency: 'USD' }}</div>
+                    </div>
+                    <!-- Botão para remover o item (opcional) -->
+                    <button class="btn btn-sm btn-danger" (click)="removeItem(item)">
+                        <i class="bi bi-trash"></i>
+                    </button>
+                </div>
             </div>
-            <!-- Botão para remover o item (opcional) -->
-            <button class="btn btn-sm btn-danger" (click)="removeItem(item)">
-                <i class="bi bi-trash"></i>
-            </button>
         </div>
-    </div>
-</div>
 
     </div>
 </div>

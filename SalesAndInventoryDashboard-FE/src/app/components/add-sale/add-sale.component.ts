@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { ProductService } from '../../services/product.service';
 import { Observable } from 'rxjs';
 import { Product } from '../../models/product';
+import { SaleService } from '../../services/sale.service';
+import { Sale } from '../../models/Sale';
 
 @Component({
   selector: 'app-add-sale',
@@ -15,6 +17,7 @@ export class AddSaleComponent implements OnInit {
   productName: string = '';
   quantity: number = 0;
   price: number = 0;
+  productId: number = 0;
 
   ngOnInit(): void {
     this.getProducts();
@@ -22,9 +25,9 @@ export class AddSaleComponent implements OnInit {
 
   products$!: Observable<Product[]>;
 
-  constructor(private productsService: ProductService) { }
+  constructor(private productsService: ProductService, private saleService: SaleService) { }
 
-  itens: { productName: string; price: number; quantity: number }[] = [];
+  itens: { productId: number; productName: string; price: number; quantity: number }[] = [];
 
   /**
    * Adds an item to the sale.
@@ -34,7 +37,7 @@ export class AddSaleComponent implements OnInit {
    */
   addItem() {
     if (this.productName != '' && this.quantity > 0 && this.price > 0) {
-      this.itens.push({ productName: this.productName, price: this.price, quantity: this.quantity });
+      this.itens.push({ productId: this.productId, productName: this.productName, price: this.price, quantity: this.quantity });
       this.productName = '';
       this.price = 0;
       this.quantity = 0;
@@ -52,10 +55,9 @@ export class AddSaleComponent implements OnInit {
  *
  * @param itemToRemove The item to be removed, identified by its product name,
  * price, and quantity.
- */
-  removeItem(itemToRemove: { productName: string; price: number; quantity: number }) {
-  this.itens = this.itens.filter(item => item !== itemToRemove);
-}
+ */  removeItem(itemToRemove: { productId: number; productName: string; price: number; quantity: number }) {
+    this.itens = this.itens.filter(item => item !== itemToRemove);
+  }
 
 
   /**
@@ -67,4 +69,27 @@ export class AddSaleComponent implements OnInit {
   getProducts() {
     this.products$ = this.productsService.getProducts();
   }
+
+  postSale() {
+  const sale: Sale = {
+    items: this.itens.map(item => ({
+      productId: item.productId,
+      productName: item.productName,
+      quantity: item.quantity,
+      unitPrice: item.price,
+      totalPrice: item.price * item.quantity
+    }))
+  };
+
+  this.saleService.postSale(sale).subscribe({
+    next: (response) => {
+      console.log('Sale posted successfully:', response);
+      this.itens = [];
+    },
+    error: (error) => {
+      console.error('Error posting sale:', error);
+      alert('Failed to post sale. Please try again.');
+    }
+  });
+}
 }
