@@ -12,10 +12,11 @@
                         <select class="form-select" id="product" name="productName" [(ngModel)]="productName" required
                             (change)="getProductByName()">
                             <option value="">Select one</option>
-                            <option *ngFor="let product of products$ | async" [value]="product.name">
+                            <option *ngFor="let product of products$ | async" [ngValue]="product.name">
                                 {{ product.name }}
                             </option>
                         </select>
+
                     </div>
 
                     <!--Product Id -->

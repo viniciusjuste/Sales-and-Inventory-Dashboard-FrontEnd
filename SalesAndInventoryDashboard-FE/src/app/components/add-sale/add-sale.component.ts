@@ -81,19 +81,26 @@ export class AddSaleComponent implements OnInit {
    */
   getProductByName() {
     if (this.productName.trim() !== '') {
-      this.productsService.getProductByName(this.productName).subscribe({
+      this.productsService.getProductByName(this.productName.trim()).subscribe({
         next: (response) => {
-          this.productName = response[0].name;
-          this.productId = response[0].id || 0;
-          this.price = response[0].price || 0;
+          if (response && response.length > 0) {
+            const matchedProduct = response.find(p => p.name.toLowerCase() === this.productName.toLowerCase());
+            if (matchedProduct) {
+              this.productId = matchedProduct.id || 0;
+              this.price = matchedProduct.price || 0;
+            } else {
+              console.warn('Produto não encontrado na lista retornada.');
+            }
+          }
         },
         error: (error) => {
-          console.error('Error getting product by name:', error);
-          alert('Failed to get product by name. Please try again.');
+          console.error('Erro ao buscar produto por nome:', error);
+          alert('Erro ao buscar produto. Tente novamente.');
         }
       });
     }
   }
+
 
   postSale() {
     if (this.itens.length === 0) {
@@ -117,8 +124,12 @@ export class AddSaleComponent implements OnInit {
         this.productId = 0;
       },
       error: (error) => {
+        if (error.status === 400) {
+          alert(error.error); 
+        } else {
+          alert('Error posting sale. Please try again.');
+        }
         console.error('Error posting sale:', error);
-        alert('Failed to post sale. Please try again.');
       }
     });
   }
