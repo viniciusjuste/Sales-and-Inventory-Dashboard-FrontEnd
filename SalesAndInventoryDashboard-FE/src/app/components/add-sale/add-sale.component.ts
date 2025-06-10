@@ -70,26 +70,56 @@ export class AddSaleComponent implements OnInit {
     this.products$ = this.productsService.getProducts();
   }
 
-  postSale() {
-  const sale: Sale = {
-    items: this.itens.map(item => ({
-      productId: item.productId,
-      productName: item.productName,
-      quantity: item.quantity,
-      unitPrice: item.price,
-      totalPrice: item.price * item.quantity
-    }))
-  };
-
-  this.saleService.postSale(sale).subscribe({
-    next: (response) => {
-      console.log('Sale posted successfully:', response);
-      this.itens = [];
-    },
-    error: (error) => {
-      console.error('Error posting sale:', error);
-      alert('Failed to post sale. Please try again.');
+  /**
+   * Gets a product by its name from the server.
+   *
+   * Subscribes to the `getProductByName` observable from the `ProductService` and
+   * updates the component's `productName`, `productId`, and `price` properties
+   * with the response.
+   * Logs an error to the console if the subscription fails and alerts the user
+   * to try again.
+   */
+  getProductByName() {
+    if (this.productName.trim() !== '') {
+      this.productsService.getProductByName(this.productName).subscribe({
+        next: (response) => {
+          this.productName = response[0].name;
+          this.productId = response[0].id || 0;
+          this.price = response[0].price || 0;
+        },
+        error: (error) => {
+          console.error('Error getting product by name:', error);
+          alert('Failed to get product by name. Please try again.');
+        }
+      });
     }
-  });
-}
+  }
+
+  postSale() {
+    if (this.itens.length === 0) {
+      alert('Please add at least one item to the sale.');
+      return;
+    }
+    const sale: Sale = {
+      items: this.itens.map(item => ({
+        productId: item.productId,
+        productName: item.productName,
+        quantity: item.quantity,
+        unitPrice: item.price,
+        totalPrice: item.price * item.quantity
+      }))
+    };
+
+    this.saleService.postSale(sale).subscribe({
+      next: (response) => {
+        console.log('Sale posted successfully:', response);
+        this.itens = [];
+        this.productId = 0;
+      },
+      error: (error) => {
+        console.error('Error posting sale:', error);
+        alert('Failed to post sale. Please try again.');
+      }
+    });
+  }
 }

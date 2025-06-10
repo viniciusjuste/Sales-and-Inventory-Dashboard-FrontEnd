@@ -9,10 +9,11 @@
                     <!-- Select Product -->
                     <div class="col-md-6">
                         <label for="product" class="form-label">Select Product</label>
-                        <select class="form-select" id="product" name="productName" [(ngModel)]="productName" required>
+                        <select class="form-select" id="product" name="productName" [(ngModel)]="productName" required
+                            (change)="getProductByName()">
                             <option value="">Select one</option>
                             <option *ngFor="let product of products$ | async" [value]="product.name">
-                                {{ product.name }} - {{ product.price | currency: 'USD': 'symbol' }} ID: ({{ product.id }})
+                                {{ product.name }}
                             </option>
                         </select>
                     </div>
@@ -21,8 +22,8 @@
                     <div class="col-md-6">
                         <label for="productId" class="form-label">Product ID</label>
                         <div class="input-group">
-                            <span class="input-group-text"><i class="bi bi-barcode"></i></span>
-                            <input type="text" class="form-control" id="productId" [(ngModel)]="productId"
+                            <span class="input-group-text"><i class="bi bi-tag"></i></span>
+                            <input type="text" class="form-control" id="productId" [(ngModel)]="productId" readonly
                                 name="productId" placeholder="Enter product ID" required>
                         </div>
                     </div>
@@ -33,7 +34,7 @@
                         <div class="input-group">
                             <span class="input-group-text"><i class="bi bi-currency-dollar"></i></span>
                             <input type="number" class="form-control" id="price" [(ngModel)]="price" step="0.01"
-                                name="price" placeholder="Enter price" required min="0.01" step="0.01">
+                                readonly name="price" placeholder="Enter price" required min="0.01" step="0.01">
                         </div>
                     </div>
 
@@ -56,7 +57,7 @@
                     </div>
 
                     <!-- Add sale Button -->
-                    <div class="col-12 d-flex align-items-end">
+                    <div class="col-md-6 d-flex align-items-end">
                         <button type="submit" class="btn btn-add w-100" (click)="postSale()">
                             <i class="bi bi-plus-circle me-2"></i> Add Sale
                         </button>
@@ -84,6 +85,5 @@
                 </div>
             </div>
         </div>
-
     </div>
 </div>

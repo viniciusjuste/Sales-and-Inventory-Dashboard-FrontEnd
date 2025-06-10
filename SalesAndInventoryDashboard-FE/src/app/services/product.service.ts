@@ -21,6 +21,10 @@ export class ProductService {
     return this.http.get<Product[]>(this.apiUrl);
   }
 
+  getProductByName(name : string): Observable<Product[]> {
+    return this.http.get<Product[]>(`${this.apiUrl}?name=${name}`);
+  }
+
   /**
    * Adds a product to the server.
    * 
