@@ -1,21 +1,8 @@
-:root {
-    --montserrat: 'Montserrat', sans-serif;
-    --open-sans: 'Open Sans', sans-serif;
-    --font-sidebar: 'Poppins', sans-serif;
-
-    --color-blue: #4796BD;
-    --black-light: #2b2b2b;
-    --black-dark: #0F0F0F;
-    --purple: #6F5E9A;
-    --white: #FFFFFF;
-    --red: #FF0000;
-}
-
 .form-wrapper {
     background-color: var(--black-dark);
 }
 
-.form-wrapper h3{
+.form-wrapper h3 {
     color: var(--purple);
     font-family: var(--poppins);
     font-weight: 600;
@@ -27,40 +14,35 @@ form input {
     padding: 0.5rem 1.5rem;
     background-color: var(--black-light);
     color: var(--white);
-    border-radius: 3rem;
     border: none;
 }
 
-.input-group span, select {
+.input-group span,
+select {
     border: none;
     background-color: var(--black-light);
     color: var(--white);
-    border-radius: 3rem;
     padding: 1rem;
 }
 
 .btn-add {
-    border-radius: 3rem;
     background-color: var(--purple);
     color: var(--white);
     padding: 1rem 1.5rem;
 }
 
 .btn-add:hover {
-    background-color: var(--purple);
+    background-color: var(--purple-hover);
     color: var(--white);
 }
 
 .btn-add-prod {
-    border-radius: 3rem;
-    background-color: var(--color-blue);
+    background-color: var(--petroleumBlue);
     color: var(--white);
     padding: 1rem 1.5rem;
 }
 
 .btn-add-prod:hover {
-    background-color: var(--color-blue);
+    background-color: var(--petroleumBlue-hover);
     color: var(--white);
 }
-
-
