@@ -25,10 +25,9 @@ form {
 }
 
 form input {
-    padding: 0.5rem 1.5rem;
+    padding: 0rem 1.5rem;
     background-color: var(--black-light);
     color: var(--white);
-    border-radius: 3rem;
     border: none;
 }
 
@@ -36,7 +35,6 @@ form input {
     border: none;
     background-color: var(--black-light);
     color: var(--white);
-    border-radius: 3rem;
     padding: 1rem;
 }
 
@@ -69,7 +67,6 @@ form .form-check-label {
 }
 
 .btn-add {
-    border-radius: 3rem;
     background-color: var(--purple);
     color: var(--white);
     padding: 1rem 1.5rem;
