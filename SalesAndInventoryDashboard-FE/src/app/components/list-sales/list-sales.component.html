@@ -12,7 +12,7 @@
     class="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-4">
 
     <div *ngFor="let sale of filteredSales(); let i = index"
-      class="bg-zinc-800 text-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition duration-300">
+      class="bg-zinc-900 text-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition duration-300">
 
       <!-- Cabeçalho da venda -->
       <div class="mb-4">
@@ -36,7 +36,6 @@
       </div>
     </div>
   </div>
-
 
   <!-- If no products -->
   <ng-template #noSales>

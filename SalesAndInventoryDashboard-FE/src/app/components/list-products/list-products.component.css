@@ -17,13 +17,11 @@
 
 .btn-edit {
   background-color: var(--purple);
-  border-radius: 3rem;
   width: 7rem;
 }
 
-.btn-delete{
+.btn-delete {
   background-color: var(--red);
-  border-radius: 3rem;
   width: 7rem;
 }
 
@@ -123,7 +121,6 @@ form .form-check-label {
 }
 
 .btn-add {
-  border-radius: 3rem;
   background-color: var(--purple);
   color: var(--white);
   padding: 1rem 1.5rem;
@@ -135,7 +132,6 @@ form .form-check-label {
 }
 
 .btn_close {
-  border-radius: 3rem;
   background-color: var(--red);
   color: var(--white);
   padding: 1rem 1.5rem;

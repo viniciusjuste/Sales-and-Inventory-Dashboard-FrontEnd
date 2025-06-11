@@ -54,11 +54,10 @@
       </p>
 
       <div class="flex gap-3 mt-4">
-        <button class="btn-edit text-white py-1.5 px-4 rounded-lg text-sm transition" (click)="openModal(product)">
+        <button class="btn-edit text-white py-1.5 px-4 text-sm transition" (click)="openModal(product)">
           Edit
         </button>
-        <button
-          class="btn-delete text-white py-1.5 px-4 rounded-lg text-sm transition disabled:opacity-50"
+        <button class="btn-delete text-white py-1.5 px-4 text-sm transition disabled:opacity-50"
           [disabled]="!product.isActive" (click)="openDeleteModal(product)">
           Delete
         </button>

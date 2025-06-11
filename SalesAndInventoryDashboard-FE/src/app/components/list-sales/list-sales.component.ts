@@ -22,7 +22,6 @@ export class ListSalesComponent {
   fetchState = FetchState.DEFAULT;
   FetchState = FetchState;
 
-
   searchTerm: string = '';
   saleData: Sale[] = [];
 
@@ -35,6 +34,10 @@ export class ListSalesComponent {
     this.checkIfMobile();
   }
 
+  /**
+   * Returns a filtered list of sales based on the search term.
+   * @returns A filtered list of sales.
+   */
   filteredSales(): Sale[] {
     const term = this.searchTerm.toLowerCase().trim();
     if (!term) return this.saleData;
@@ -43,7 +46,6 @@ export class ListSalesComponent {
       sale.id?.toString().toLowerCase().includes(term)
     );
   }
-
 
   @HostListener('window:resize', [])
   onResize() {
@@ -57,11 +59,6 @@ export class ListSalesComponent {
   /**
    * Fetches a list of sales from the server and stores them in the component's
    * `products` property.
-   *
-   * Subscribes to the `getSales` observable from the `SalesService` and
-   * updates the component's `fetchState` property according to the response.
-   * Logs a success message if the subscription is successful, or an error
-   * message if an error occurs during the subscription.
    */
   getSales() {
     this.fetchState = FetchState.LOADING;
@@ -81,10 +78,6 @@ export class ListSalesComponent {
 
   /**
    * Calculates the total sales amount for a given sale.
-   *
-   * This method iterates over the sale items and sums up the product
-   * of the unit price and quantity for each item to compute the total sales amount.
-   *
    * @param sale The sale object containing items to calculate the total sales amount.
    * @returns The total sales amount as a number.
    */
