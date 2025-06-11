@@ -25,9 +25,12 @@
   --font-sidebar: 'Poppins', sans-serif;
 
   --color-blue: #4796BD;
+  --petroleumBlue: #007F7F;
+  --petroleumBlue-hover: #008C8A;
   --black-light: #2b2b2b;
   --black-dark: #0F0F0F;
   --purple: #6F5E9A;
+  --purple-hover: #5C4E83;
   --white: #FFFFFF;
   --red: #FF0000;
 }
