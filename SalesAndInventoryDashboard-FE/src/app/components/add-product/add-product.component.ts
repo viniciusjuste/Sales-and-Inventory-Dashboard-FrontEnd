@@ -10,7 +10,7 @@ import { Product } from '../../models/product';
   templateUrl: './add-product.component.html',
   styleUrl: './add-product.component.css'
 })
-export class AddProductComponent implements OnInit {
+export class AddProductComponent {
 
   name: string = '';
   description: string = '';
@@ -22,38 +22,34 @@ export class AddProductComponent implements OnInit {
 
   constructor(private productService: ProductService) { }
 
-  ngOnInit(): void {
-    // Initialization logic here
+  /**
+   * Adds a new product to the server via the Product service.
+   */
+  addProduct() {
+    const product: Product = this.createProduct();
+    this.productService.addProduct(product).subscribe({
+      next: (response) => {
+        this.resetInputs();
+      },
+      error: (error) => {
+        console.error('Error adding product:', error);
+        this.resetInputs();
+      }
+    })
   }
 
   /**
-   * Adds a new product to the server via the Product service.
-   * Creates a Product object from the component's input fields and
-   * calls the Product service's addProduct method to add the product.
-   * Logs a success message if successful, or an error message if
-   * an error occurs. Resets the input fields to their initial state
-   * after attempting to add the product.
+   * Creates a new product object from the form inputs.
    */
-  addProduct() {
-    const product: Product = {
+  createProduct(): Product {
+    return {
       name: this.name,
       description: this.description,
       price: this.price,
       stockQuantity: this.stockQuantity,
       category: this.category,
-      isActive: this.isActive,
-    }
-
-    this.productService.addProduct(product).subscribe({
-      next: (response) => {
-        console.log('Product added successfully:', response);
-        this.resetInputs(); // Reset inputs after successful addition
-      },
-      error: (error) => {
-        console.error('Error adding product:', error);
-        this.resetInputs(); // Reset inputs on error
-      }
-    })
+      isActive: this.isActive
+    };
   }
 
   /**
