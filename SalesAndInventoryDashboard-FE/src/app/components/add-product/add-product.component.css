@@ -15,6 +15,17 @@
     background-color: #141414;
 }
 
+.form-wrapper h3 {
+    color: var(--purple);
+}
+
+/* Placeholder text style */
+::placeholder {
+    color: var(--white);
+    font-family: var(--poppins);
+    opacity: 0.8;
+}
+
 .form-wrapper {
     width: 70vw;
     background-color: var(--black-dark);
@@ -76,7 +87,7 @@ form .form-check-label {
 }
 
 .btn-add:hover {
-    background-color: var(--purple);
+    background-color: var(--purple-hover);
     color: var(--white);
 }
 
