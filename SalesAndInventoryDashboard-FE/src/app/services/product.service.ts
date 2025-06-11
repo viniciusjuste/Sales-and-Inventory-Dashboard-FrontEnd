@@ -13,21 +13,24 @@ export class ProductService {
   apiUrl = 'http://localhost:5292/products';
 
   /**
-   * Fetches a list of products from the server.
-   * 
+   * Fetches all products.
    * @returns An observable that emits an array of products.
    */
   getProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(this.apiUrl);
   }
 
-  getProductByName(name : string): Observable<Product[]> {
+  /**
+ * Fetches products matching the given name.
+   * @param name The name to search for.
+   * @returns An observable that emits matching products.
+   */
+  getProductByName(name: string): Observable<Product[]> {
     return this.http.get<Product[]>(`${this.apiUrl}?name=${name}`);
   }
 
   /**
    * Adds a product to the server.
-   * 
    * @param product The product to be added.
    * @returns An observable that emits the added product.
    */
@@ -36,8 +39,7 @@ export class ProductService {
   }
 
   /**
-   * Updates a product in the server.
-   * 
+   * Updates an existing product.
    * @param product The product to be updated.
    * @returns An observable that emits the updated product.
    */
@@ -46,12 +48,11 @@ export class ProductService {
   }
 
   /**
-   * Deletes a product from the server.
-   * 
+   * Deletes a product.
    * @param productId The id of the product to be deleted.
    * @returns An observable that emits nothing.
    */
-  deleteProduct(productId : number): Observable<void> {
+  deleteProduct(productId: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${productId}`);
   }
 }

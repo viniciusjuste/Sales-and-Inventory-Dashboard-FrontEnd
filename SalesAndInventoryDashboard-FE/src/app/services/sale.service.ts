@@ -13,8 +13,7 @@ export class SaleService {
   url = 'http://localhost:5292/sales';
 
   /**
-   * Fetches a list of sales from the server.
-   *
+   * Fetches all sales from the server.
    * @returns An observable that emits an array of sales.
    */
   getSales(): Observable<Sale[]> {
@@ -22,8 +21,7 @@ export class SaleService {
   }
 
   /**
-   * Sends a sale object to the server to be added.
-   *
+   * Sends a sale to the server to be added.
    * @param sale The sale object to be added.
    * @returns An observable that emits the added sale.
    */
