@@ -30,10 +30,7 @@ export class AddSaleComponent implements OnInit {
   itens: { productId: number; productName: string; price: number; quantity: number }[] = [];
 
   /**
-   * Adds an item to the sale.
-   *
-   * If the product name is not empty and the quantity is greater than 0, the item is added to the sale.
-   * Otherwise, an alert is displayed to the user to fill in the fields correctly.
+   * Adds an item to the sale if all required fields are filled.
    */
   addItem() {
     if (this.productName != '' && this.quantity > 0 && this.price > 0) {
@@ -41,43 +38,32 @@ export class AddSaleComponent implements OnInit {
       this.productName = '';
       this.price = 0;
       this.quantity = 0;
-      console.log(this.itens);
+      this.productId = 0;
     } else {
       alert('Please fill in all fields correctly.');
     }
   }
 
-/**
- * Removes an item from the sale.
- *
- * This method filters out the specified item from the `itens` array,
- * effectively removing it from the list of items in the sale.
- *
- * @param itemToRemove The item to be removed, identified by its product name,
- * price, and quantity.
- */  removeItem(itemToRemove: { productId: number; productName: string; price: number; quantity: number }) {
+  /**
+   * Removes an item from the sale list.
+   *
+   * @param itemToRemove - The item to remove from the sale list.
+   */
+  removeItem(itemToRemove: { productId: number; productName: string; price: number; quantity: number }) {
     this.itens = this.itens.filter(item => item !== itemToRemove);
+
   }
 
-
   /**
-   * Initializes the `products$` observable with the list of products from the server.
-   * 
-   * Subscribes to the `getProducts` observable from the `ProductService` and stores
-   * the result in the `products$` property.
+   * Loads the list of products from the server.
    */
   getProducts() {
     this.products$ = this.productsService.getProducts();
   }
 
-  /**
-   * Gets a product by its name from the server.
-   *
-   * Subscribes to the `getProductByName` observable from the `ProductService` and
-   * updates the component's `productName`, `productId`, and `price` properties
-   * with the response.
-   * Logs an error to the console if the subscription fails and alerts the user
-   * to try again.
+    /**
+   * Fills product info (ID and price) based on the entered product name.
+   * If not found, logs a warning.
    */
   getProductByName() {
     if (this.productName.trim() !== '') {
@@ -101,7 +87,12 @@ export class AddSaleComponent implements OnInit {
     }
   }
 
-
+  /**
+   * Submits the sale to the server.
+   * - Validates that at least one item is present.
+   * - Maps item data to the Sale model.
+   * - Handles server response and resets the form.
+   */
   postSale() {
     if (this.itens.length === 0) {
       alert('Please add at least one item to the sale.');
@@ -125,7 +116,7 @@ export class AddSaleComponent implements OnInit {
       },
       error: (error) => {
         if (error.status === 400) {
-          alert(error.error); 
+          alert(error.error);
         } else {
           alert('Error posting sale. Please try again.');
         }
