@@ -147,6 +147,10 @@ form .form-check-label {
     padding-top: 1rem !important;
   }
 
+  .input-wrapper {
+    margin-top: 3rem;
+  }
+
   @media screen and (max-width: 768px) {
     .container-fluid {
       padding: 0.3rem !important;

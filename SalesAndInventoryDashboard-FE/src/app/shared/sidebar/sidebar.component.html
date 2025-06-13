@@ -85,22 +85,23 @@
                     <span class="title ms-3">Add Product</span>
                 </a>
             </li>
-            <li><a routerLink="/list-sales">
+            <li (click)="menuOnClick()">
+                <a routerLink="/list-sales">
 
                     <span class="icon"><i class="bi bi-receipt"></i></span>
-                    <span class="title">List Sales</span>
-                </a></li>
-            <li><a href="#">Blog</a></li>
-            <li>
-                <a routerLink="/add-sales">
-                    <span class="icon"><i class="bi bi-receipt"></i></span>
-                    <span class="title">add Sales</span>
+                    <span class="title ms-3">List Sales</span>
                 </a>
             </li>
-            <li>
+            <li (click)="menuOnClick()">
+                <a routerLink="/add-sales">
+                    <span class="icon"><i class="bi bi-receipt"></i></span>
+                    <span class="title ms-3">add Sales</span>
+                </a>
+            </li>
+            <li (click)="menuOnClick()">
                 <a routerLink="/dashboard">
                     <span class="icon"><i class="bi bi-box-seam"></i></span>
-                    <span class="title">Dashboard</span>
+                    <span class="title ms-3">Dashboard</span>
                 </a>
             </li>
         </ul>

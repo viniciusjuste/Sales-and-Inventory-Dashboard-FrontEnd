@@ -46,3 +46,9 @@ select {
     background-color: var(--petroleumBlue-hover);
     color: var(--white);
 }
+
+@media (max-width: 1000px) {
+.section-wrapper {
+    padding-top: 4rem !important;
+}
+}

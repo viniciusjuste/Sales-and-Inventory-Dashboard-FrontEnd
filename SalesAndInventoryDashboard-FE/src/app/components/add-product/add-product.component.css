@@ -115,3 +115,15 @@ form .form-check-label {
         font-size: 1.2rem;
     }
 }
+
+@media screen and (max-width: 500px) {
+    .form-wrapper {
+        margin-top: 5.5rem;
+    }
+}
+
+@media screen and (max-width: 380px) {
+    .form-wrapper {
+        margin-top: 22.5rem;
+    }
+}

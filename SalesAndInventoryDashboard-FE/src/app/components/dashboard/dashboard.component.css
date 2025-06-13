@@ -24,3 +24,13 @@
     height: 400px;
     margin: 0 auto;
 }
+
+@media screen and (max-width: 1000px) {
+    .dashboard-cards {
+        margin-top: 3rem;
+    }
+
+    .card {
+        margin-bottom: 0rem;
+    }
+}
