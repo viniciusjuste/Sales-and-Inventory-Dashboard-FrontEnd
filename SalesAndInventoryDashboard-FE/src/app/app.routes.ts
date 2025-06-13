@@ -3,6 +3,7 @@ import { ListProductsComponent } from './components/list-products/list-products.
 import { AddProductComponent } from './components/add-product/add-product.component';
 import { ListSalesComponent } from './components/list-sales/list-sales.component';
 import { AddSaleComponent } from './components/add-sale/add-sale.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 export const routes: Routes = [
     {
@@ -23,5 +24,10 @@ export const routes: Routes = [
     {
         path: 'add-sales',
         component: AddSaleComponent,
-    }
+    },
+
+    {
+        path: 'dashboard',
+        component: DashboardComponent,
+    },
 ];

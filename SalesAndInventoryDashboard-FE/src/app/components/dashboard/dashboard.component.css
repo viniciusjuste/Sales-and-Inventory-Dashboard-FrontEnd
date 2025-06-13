@@ -1,0 +1,26 @@
+.dashboard-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0px;
+    margin-bottom: 30px;
+}
+
+.card {
+    background-color: var(--black-dark);
+    padding: 16px;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    color: var(--purple);
+    margin-inline: 0.5rem;
+    margin-bottom: 4rem;
+    margin-top: 1.5rem;
+}
+
+.chart-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    height: 400px;
+    margin: 0 auto;
+}

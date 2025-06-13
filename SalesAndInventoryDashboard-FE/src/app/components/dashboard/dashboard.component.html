@@ -1,0 +1,10 @@
+<div class="dashboard-cards">
+  <div class="card">💰 Receita Total: R$ {{ report.totalRevenue }}</div>
+  <div class="card">🛒 Total de Vendas: {{ report.totalSales }}</div>
+  <div class="card">📦 Ticket Médio: R$ {{ report.averageTicket }}</div>
+  <div class="card">🏆 Mais Vendido: {{ report.bestSellingProduct }} ({{ report.bestSellingProductQuantity }})</div>
+</div>
+
+<div class="chart-container">
+  <canvas id="dailySalesChart"></canvas>
+</div>
