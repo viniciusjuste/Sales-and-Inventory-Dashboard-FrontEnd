@@ -13,32 +13,25 @@ import { BreakpointObserver, Breakpoints, LayoutModule } from '@angular/cdk/layo
 export class SidebarComponent {
   isSidebarOpen = false;
   isMobile = false;
+  isMenuOpen = false;
 
   @ViewChild('sidebar') sidebar: ElementRef | undefined;
   @Output() sidebarToggle = new EventEmitter<boolean>();
 
   /**
-   * Constructor.
-   *
-   * Listens for changes in the breakpoint size and updates the component's
-   * `isMobile` property accordingly. This is used to determine whether the
-   * component should be displayed as a sidebar or not.
-   *
-   * @param breakpointObserver The BreakpointObserver to observe the breakpoints.
-   */
+  * Injects the BreakpointObserver to detect changes in the screen size.
+  * Sets the `isMobile` property to `true` if the screen width is equal to or less than 1000px.
+  * @param breakpointObserver Service used to observe changes in the screen breakpoints.
+  */
   constructor(private breakpointObserver: BreakpointObserver) {
-  this.breakpointObserver.observe(['(max-width: 1000px)'])
-    .subscribe(result => {
-      this.isMobile = result.matches;
-      console.log('BreakpointObserver - isMobile:', this.isMobile);
-    });
-}
+    this.breakpointObserver.observe(['(max-width: 1000px)'])
+      .subscribe(result => {
+        this.isMobile = result.matches;
+      });
+  }
 
   /**
    * Toggles the sidebar open or closed.
-   *
-   * If the sidebar element doesn't exist, this method does nothing.
-   *
    * Otherwise, it toggles the `isSidebarOpen` property and emits the
    * `sidebarToggle` event with the new value of `isSidebarOpen`.
    */
@@ -48,8 +41,6 @@ export class SidebarComponent {
     this.isSidebarOpen = !this.isSidebarOpen;
     this.sidebarToggle.emit(this.isSidebarOpen);
   }
-
-   isMenuOpen = false;
 
   menuOnClick() {
     this.isMenuOpen = !this.isMenuOpen;

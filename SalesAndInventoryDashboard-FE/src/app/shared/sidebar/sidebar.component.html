@@ -1,23 +1,24 @@
-<div *ngIf="!isMobile" #sidebar class="sidebar" (mouseenter)="toggleSidebar()" (mouseleave)="toggleSidebar()">
+<div *ngIf="!isMobile" #sidebar class="sidebar bg-zinc-900" (mouseenter)="toggleSidebar()"
+    (mouseleave)="toggleSidebar()">
     <ul>
         <!-- Logo -->
         <li class="logo">
             <a href="#">
                 <span class="icon"><i class="bi bi-box-seam"></i></span>
-                <span class="title">Logo of site</span>
+                <span class="title">Your Logo</span>
             </a>
         </li>
 
         <li>
             <a routerLink="/">
-                <span class="icon"><i class="bi bi-box-seam"></i></span>
+                <span class="icon"><i class="bi bi-receipt"></i></span>
                 <span class="title">List Products</span>
             </a>
         </li>
 
         <li>
             <a routerLink="/add-product">
-                <span class="icon"><i class="bi bi-bag-plus-fill"></i></span>
+                <span class="icon"><i class="bi bi-bag-plus"></i></span>
                 <span class="title">Add Product</span>
             </a>
         </li>
@@ -31,14 +32,14 @@
 
         <li>
             <a routerLink="/add-sales">
-                <span class="icon"><i class="bi bi-receipt"></i></span>
+                <span class="icon"><i class="bi bi-bag-plus"></i></span>
                 <span class="title">add Sales</span>
             </a>
         </li>
 
         <li>
             <a routerLink="/dashboard">
-                <span class="icon"><i class="bi bi-box-seam"></i></span>
+                <span class="icon"><i class="bi bi-bar-chart"></i></span>
                 <span class="title">Dashboard</span>
             </a>
         </li>
@@ -57,7 +58,7 @@
 
         <li>
             <a href="#">
-                <span class="icon"><i class="bi bi-box-seam"></i></span>
+                <span class="icon"><i class="bi bi-box-arrow-left"></i></span>
                 <span class="title">Logout</span>
             </a>
         </li>
@@ -75,13 +76,13 @@
         <ul>
             <li (click)="menuOnClick()">
                 <a routerLink="/">
-                    <span class="icon"><i class="bi bi-box-seam"></i></span>
+                    <span class="icon"><i class="bi bi-receipt"></i></span>
                     <span class="title ms-3">List Products</span>
                 </a>
             </li>
             <li (click)="menuOnClick()">
                 <a routerLink="/add-product">
-                    <span class="icon"><i class="bi bi-bag-plus-fill"></i></span>
+                    <span class="icon"><i class="bi bi-bag-plus"></i></span>
                     <span class="title ms-3">Add Product</span>
                 </a>
             </li>
@@ -94,14 +95,20 @@
             </li>
             <li (click)="menuOnClick()">
                 <a routerLink="/add-sales">
-                    <span class="icon"><i class="bi bi-receipt"></i></span>
+                    <span class="icon"><i class="bi bi-bag-plus"></i></span>
                     <span class="title ms-3">add Sales</span>
                 </a>
             </li>
             <li (click)="menuOnClick()">
                 <a routerLink="/dashboard">
-                    <span class="icon"><i class="bi bi-box-seam"></i></span>
+                    <span class="icon"><i class="bi bi-bar-chart"></i></span>
                     <span class="title ms-3">Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="icon"><i class="bi bi-box-arrow-left"></i></span>
+                    <span class="title ms-3">Logout</span>
                 </a>
             </li>
         </ul>
