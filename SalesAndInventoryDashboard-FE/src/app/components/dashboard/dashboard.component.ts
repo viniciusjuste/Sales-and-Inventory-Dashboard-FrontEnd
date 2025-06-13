@@ -10,41 +10,62 @@ import {
   Legend,
   ChartConfiguration
 } from 'chart.js';
+import { SaleService } from '../../services/sale.service';
 
 Chart.register(BarController, BarElement, CategoryScale, LinearScale, Tooltip, Legend);
+
 @Component({
   selector: 'app-dashboard',
+  standalone: true,
   imports: [RouterModule],
   templateUrl: './dashboard.component.html',
-  styleUrl: './dashboard.component.css'
+  styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements AfterViewInit {
-  report = {
-    totalRevenue: 141,
-    totalSales: 3,
-    averageTicket: 47,
-    bestSellingProduct: 'Suco Natural',
-    bestSellingProductQuantity: 15,
-    dailySales: [
-      { date: '2025-06-07T00:00:00', value: 90 },
-      { date: '2025-06-08T00:00:00', value: 120 },
-      { date: '2025-06-09T00:00:00', value: 70 },
-      { date: '2025-06-10T00:00:00', value: 141 }
-    ]
-  };
+  report: any = {};
+
+  constructor(private saleService: SaleService) { }
 
   ngAfterViewInit() {
-    const labels = this.report.dailySales.map(s => new Date(s.date).toLocaleDateString());
-    const data = this.report.dailySales.map(s => s.value);
+    this.getSaleReport();
+  }
 
+  /**
+   * Fetches a sales report from the server and stores it in the component's
+   * `createChart` method to render the sales chart.
+   */
+  getSaleReport() {
+    this.saleService.getSaleReport().subscribe({
+      next: (report) => {
+        this.report = report;
+        this.createChart();
+      },
+      error: (err) => {
+        console.error('Error fetching sales report:', err);
+      }
+    });
+  }
+
+  /**
+   * Creates a bar chart with daily sales data.
+   * @private
+   */
+  private createChart(): void {
+    if (!this.report.dailySales || !Array.isArray(this.report.dailySales)) {
+      console.warn('Missing or invalid daily sales data.');
+      return;
+    }
+
+    const labels = this.report.dailySales.map((s: { date: string, value: number }) => new Date(s.date).toLocaleDateString());
+    const data = this.report.dailySales.map((s: { date: string, value: number }) => s.value);
     const config: ChartConfiguration<'bar'> = {
       type: 'bar',
       data: {
-        labels: ['10/06/2025'],
+        labels,
         datasets: [{
           label: 'Vendas Diárias (R$)',
-          data: [141],
-          backgroundColor: '#4CAF50'
+          data,
+          backgroundColor: '#007F7F'
         }]
       },
       options: {
@@ -78,6 +99,11 @@ export class DashboardComponent implements AfterViewInit {
       }
     };
 
-    new Chart('dailySalesChart', config);
+    const canvas: HTMLCanvasElement | null = document.getElementById('dailySalesChart') as HTMLCanvasElement;
+    if (canvas) {
+      new Chart(canvas, config);
+    } else {
+      console.error('Canvas element with ID "dailySalesChart" not found.');
+    }
   }
 }

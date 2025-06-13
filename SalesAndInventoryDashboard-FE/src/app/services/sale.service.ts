@@ -28,4 +28,12 @@ export class SaleService {
   postSale(sale: Sale): Observable<Sale> {
     return this.http.post<Sale>(this.url, sale);
   }
+
+  /**
+   * Fetches a report of all sales from the server.
+   * @returns An observable that emits an array of sales.
+   */
+  getSaleReport(): Observable<any> {
+    return this.http.get<any>(`${this.url}/report`);
+  }
 }
