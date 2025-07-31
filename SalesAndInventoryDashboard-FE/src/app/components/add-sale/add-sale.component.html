@@ -69,17 +69,17 @@
 
         <!-- Lista de produtos adicionados -->
         <div class="mt-5">
-            <h5 class="text-white">Produtos adicionados:</h5>
-            <div *ngIf="itens.length === 0" class="text-white-50">Nenhum produto adicionado ainda.</div>
+            <h5 class="text-white">Products added:</h5>
+            <div *ngIf="itens.length === 0" class="text-white-50">No products added yet.</div>
 
             <div *ngFor="let item of itens" class="card bg-dark text-white mb-2 p-3 rounded-3 shadow-sm">
                 <div class="d-flex justify-content-between align-items-center">
                     <div>
                         <strong>{{ item.productName }}</strong>
-                        <div>Quantidade: {{ item.quantity }}</div>
-                        <div>Preço: {{ item.price | currency: 'USD' }}</div>
+                        <div>Quantity: {{ item.quantity }}</div>
+                        <div>Price: {{ item.price | currency: 'USD' }}</div>
                     </div>
-                    <!-- Botão para remover o item (opcional) -->
+                    <!-- Button to remove the item (optional) -->
                     <button class="btn btn-sm btn-danger" (click)="removeItem(item)">
                         <i class="bi bi-trash"></i>
                     </button>

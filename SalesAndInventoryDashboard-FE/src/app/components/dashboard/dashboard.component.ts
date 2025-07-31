@@ -63,7 +63,7 @@ export class DashboardComponent implements AfterViewInit {
       data: {
         labels,
         datasets: [{
-          label: 'Vendas Diárias (R$)',
+          label: 'Daily Sales ($)',
           data,
           backgroundColor: '#007F7F'
         }]
